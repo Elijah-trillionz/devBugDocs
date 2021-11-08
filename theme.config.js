@@ -17,6 +17,7 @@ const theme = {
     mobileL: '600px',
     tablet: '768px',
     tabletL: '900px',
+    laptop: '1120px',
   },
 };
 

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { StyledButton } from '../Button.Styled';
+import { StyledButton } from './Button.Styled';
 
 export const StyledMicroNav = styled.nav`
   background-color: #fff;
@@ -168,7 +168,7 @@ export const BodyOverlay = styled.div`
 
 export const BackToTopModal = styled.div`
   position: fixed;
-  bottom: 60px;
+  bottom: 80px;
   right: ${({ active }) => (active ? '10px' : '-50px')};
   border-radius: 5px;
   display: flex;

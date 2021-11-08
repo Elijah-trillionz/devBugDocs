@@ -7,9 +7,9 @@ import {
   DesignSvgTwo,
   CircleConOne,
   CircleConTwo,
-} from '../styles/home/Header.styled';
-import DesignSvg from '../DesignSvg';
-import CircleSvg from '../CircleSvg';
+} from '../styles/home layout/Header.styled';
+import DesignSvg from '../svgs/DesignSvg';
+import CircleSvg from '../svgs/CircleSvg';
 
 const Header = () => {
   return (

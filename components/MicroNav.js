@@ -5,9 +5,10 @@ import {
   SearchButton,
   SearchModal,
   StyledMicroNav,
-} from '../styles/home/MicroNav.styled';
+} from './styles/MicroNav.styled';
+import Link from 'next/link';
 
-const MicroNav = () => {
+const MicroNav = ({ tags }) => {
   const [isModalActive, setIsModalActive] = useState(false);
   const [sticky, setSticky] = useState(false);
   const [backToTopModal, setBackToTopModal] = useState(false);
@@ -46,24 +47,11 @@ const MicroNav = () => {
       {sticky && <h2>SortCode</h2>}
       <div>
         <ul>
-          <li>
-            #Issues <span style={{ background: 'tomato' }}></span>
-          </li>
-          <li>
-            #Features <span style={{ background: '#3caf50' }}></span>
-          </li>
-          <li>
-            #Observations <span style={{ background: '#fc929e' }}></span>
-          </li>
-          <li>
-            #Exercises <span style={{ background: 'purple' }}></span>
-          </li>
-          <li>
-            #JavaScript <span style={{ background: '#f0db4f' }}></span>
-          </li>
-          <li>
-            #React <span style={{ background: '#61dafb' }}></span>
-          </li>
+          {tags.map((tag) => (
+            <li key={tag.tag}>
+              #{tag.tag} <span style={{ background: tag.bg }}></span>
+            </li>
+          ))}
         </ul>
       </div>
       <i className='fas fa-search' onClick={openSearchModal}></i>

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import {
   StatsItems,
-  StyledDocument,
+  StyledDocumentItem,
   UserAvatar,
-} from './styles/Document.styled';
+} from './styles/DocumentItem.styled';
 import Link from 'next/link';
 
 const DocumentItem = ({ document }) => {
@@ -34,7 +34,7 @@ const DocumentItem = ({ document }) => {
   }, [views, setViews]);
 
   return (
-    <StyledDocument>
+    <StyledDocumentItem>
       <span>August 8th, 2021</span>
       <Link href={`/${document.title}`}>
         {/* should change to slug */}
@@ -59,7 +59,7 @@ const DocumentItem = ({ document }) => {
         </StatsItems>
         <span style={{ background: colors[document.type] }}></span>
       </div>
-    </StyledDocument>
+    </StyledDocumentItem>
   );
 };
 

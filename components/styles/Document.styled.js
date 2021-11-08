@@ -1,105 +1,191 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
-export const StyledDocument = styled.div`
-  background-color: #fff;
-  margin: 13px 0;
-  border-radius: 7px;
-  box-shadow: 0 1px 2px 0 #e5e5e5;
-  border: 2px solid #fff;
-  padding: 8px 22px;
-  transition: 0.3s ease-in-out;
+export const StyledDocument = styled.article`
+  padding-right: 15px;
 
-  &:hover {
-    border-color: ${({ theme }) => theme.colors.header};
+  h1 {
+    padding: 10px 0;
+    font-size: ${({ longTitle }) => (longTitle ? '1.4rem' : '2rem')};
+    text-transform: capitalize;
+    font-family: 'Ubuntu', sans-serif;
+    color: #333;
+    margin-bottom: 10px;
+    line-height: 1.5;
+    word-spacing: 2px;
   }
 
-  & > span {
+  h1::after {
     display: block;
-    text-align: right;
-    font-size: 0.6rem;
-    color: #666;
+    content: ' ';
+    width: 30%;
+    height: 2.3px;
+    border-radius: 3px;
+    margin-top: 6px;
+    background-color: ${({ theme }) => theme.colors.header};
   }
 
-  & > a {
-    display: block;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #444;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    transition: 0.3s ease-in-out;
-    cursor: pointer;
-    text-decoration: none;
-  }
-
-  & > a:hover {
-    color: ${({ theme }) => theme.colors.header};
-  }
-
-  & > div {
-    display: flex;
-    align-items: center;
-  }
-
-  & > div span {
-    display: block;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    margin-left: 3px;
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    border-right: 1px solid #ccc;
+    margin-right: 20px;
   }
 `;
 
-export const UserAvatar = styled.div`
+export const StyledDocumentMeta = styled.div`
   display: flex;
-  align-items: center;
-  flex: 1;
-  margin-bottom: 3px;
+  margin-bottom: 20px;
+`;
 
-  i {
-    background-color: #c4c4c4; // experimental, to be removed
-    font-size: 0.7rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 35px;
-    width: 35px;
-    border-radius: 50%;
-    margin-right: 6px;
+export const Markdown = styled.div`
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-family: 'Lato', sans-serif;
+  }
+
+  h2 a,
+  h3 a,
+  h4 a,
+  h5 a,
+  h6 a {
+    color: #000 !important;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  h4 {
+    font-size: 1.1rem;
+  }
+
+  h5 {
+    font-size: 1rem;
+  }
+
+  h6 {
+    font-size: 0.9rem;
+  }
+
+  p,
+  li {
+    font-size: 0.96rem;
+    padding: 10px 0;
+    line-height: 1.6;
+    word-spacing: 2px;
+    color: #333;
+  }
+
+  code {
+    background-color: #d4ebf4;
+    display: inline-block;
+    padding: 0 5px;
+    border-radius: 5px;
+    margin: 3px;
+  }
+
+  pre > code {
+    background-color: #000;
     color: #fff;
+    font-size: 0.9rem;
+    display: block;
+    padding: 10px;
+  }
+
+  ul,
+  ol {
+    margin-left: 17px;
+  }
+
+  li {
+    font-size: 0.96rem;
   }
 
   a {
-    color: #666;
-    font-size: 0.76rem;
-    display: inline-block;
-    text-decoration: underline transparent;
+    color: #333;
     transition: 0.3s ease-in-out;
   }
 
   a:hover {
-    text-decoration-color: #666;
+    text-decoration: underline transparent;
+  }
+
+  strong,
+  b {
+    font-weight: 600;
   }
 `;
 
-export const StatsItems = styled.div`
+// document actions
+const breathing = keyframes`
+  0% {
+    transform: scale(1)
+  }
+  50% {
+    transform: scale(1.14)
+  }
+  100% {
+    transform: scale(1)
+  }
+`;
+
+export const LikeDocument = styled.div`
+  margin: 20px 0;
+  padding: 20px 0;
+  border-top: 1px solid #ccc;
   display: flex;
   align-items: center;
 
-  div {
-    display: flex;
-    align-items: center;
-    margin-right: 10px;
+  h3 {
+    flex: 1;
   }
 
   i {
-    font-size: 0.8rem;
-    color: #666;
-    margin-right: 3px;
+    font-size: 3.5rem;
+    margin-right: 30px;
+    cursor: pointer;
+    color: #444;
+    animation: ${breathing} 1.3s linear infinite;
+    transition: 0.3s ease-in-out;
   }
 
-  p {
-    color: #666;
-    font-size: 0.76rem;
+  i:hover {
+    color: tomato;
+  }
+`;
+
+export const ShareDocument = styled(LikeDocument)`
+  i {
+    font-size: 1.7rem;
+    margin-right: 14px;
+    animation: none;
+    transition: 0.2s ease-in-out;
+  }
+
+  .fa-facebook:hover {
+    color: #3b5998;
+  }
+
+  .fa-twitter:hover {
+    color: #00acee;
+  }
+
+  .fa-hacker-news-square:hover {
+    color: #ff6600;
+  }
+
+  .fa-reddit:hover {
+    color: #ff4500;
+  }
+
+  .fa-linkedin:hover {
+    color: #0077b5;
   }
 `;

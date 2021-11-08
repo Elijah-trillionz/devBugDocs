@@ -1,9 +1,12 @@
 import { StyledSidebarItem } from './styles/Sidebar.styled';
 
-const SideBarItem = ({ iconName, iconbg, title, subTitle, digit }) => {
+const SideBarItem = ({ iconName, iconbg, title, subTitle, digit, fab }) => {
   return (
     <StyledSidebarItem>
-      <i className={`fas fa-${iconName}`} style={{ background: iconbg }}></i>
+      <i
+        className={`${fab ? 'fab' : 'fas'} fa-${iconName}`}
+        style={{ background: iconbg }}
+      ></i>
       <div>
         <p>{title}</p>
         <span>{subTitle}</span>

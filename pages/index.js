@@ -1,5 +1,6 @@
 import DocumentItem from '../components/DocumentItem';
 import HomeLayout from '../components/layouts/HomeLayout';
+import SideBar from '../components/SideBar';
 
 const Home = () => {
   const documents = [
@@ -63,12 +64,15 @@ const Home = () => {
   ];
 
   return (
-    <HomeLayout>
-      <main>
-        {documents.map((document) => (
-          <DocumentItem document={document} key={document.id} />
-        ))}
-      </main>
+    <HomeLayout smallerDiv={false}>
+      <div>
+        <main>
+          {documents.map((document) => (
+            <DocumentItem document={document} key={document.id} />
+          ))}
+        </main>
+        <SideBar />
+      </div>
     </HomeLayout>
   );
 };

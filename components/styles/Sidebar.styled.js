@@ -19,6 +19,7 @@ export const StyledSidebarItem = styled.div`
   border-radius: 7px;
   cursor: pointer;
   transition: 0.3s ease-in-out;
+  margin-bottom: 20px;
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.hover};

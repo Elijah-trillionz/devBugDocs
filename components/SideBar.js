@@ -22,9 +22,10 @@ const SideBar = () => {
       <SideBarItem
         title='Follow Us'
         subTitle='Twitter @elijahtrillionz'
-        iconName='heart'
-        iconbg='tomato'
-        digit={40}
+        iconName='twitter'
+        iconbg='#00acee'
+        digit={5000}
+        fab={true}
       />
       <h3>Views</h3>
       <SideBarItem
@@ -42,11 +43,11 @@ const SideBar = () => {
         digit={40}
       />
       <SideBarItem
-        title='Most Viewed'
-        subTitle='Month of October'
-        iconName='eye'
-        iconbg='tomato'
-        digit={40}
+        title='Support Us'
+        subTitle='Buy me a Coffee'
+        iconName='heart' // change to cup
+        iconbg='gold'
+        digit='$$'
       />
     </StyledSidebar>
   );

@@ -25,7 +25,7 @@ const GlobalStyles = createGlobalStyle`
   ::-webkit-scrollbar-track {
     background-color: #d4ebf4;
     border-radius: 25px;
-    margin: 1px 0;
+    margin: 2px 0;
   }
   ::-webkit-scrollbar-thumb {
     background-color: #46A2C9;
