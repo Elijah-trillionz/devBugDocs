@@ -1,13 +1,12 @@
 import {
   StyledDocument,
-  Markdown,
-  DocumentAction,
+  Markdown
 } from '../styles/Document.styled';
 import DocumentMeta from './DocumentMeta';
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 import DocumentActions from './DocumentActions';
 
-const Document = ({ title, markdown, meta }) => {
+const Document = ({title, markdown, meta}) => {
   const [longTitle, setLongTitle] = useState(false);
 
   useEffect(() => {
@@ -21,7 +20,7 @@ const Document = ({ title, markdown, meta }) => {
   return (
     <StyledDocument longTitle={longTitle}>
       <h1>{title}</h1>
-      <DocumentMeta meta={meta} />
+      <DocumentMeta meta={meta}/>
       <Markdown>
         <h2>Step two</h2>
         <p>
@@ -36,7 +35,7 @@ const Document = ({ title, markdown, meta }) => {
           <code>A sample of code</code>
         </p>
         <pre>
-          <code>const name = 'JavaScript';</code>
+          <code>const name = &apos;JavaScript&apos;;</code>
         </pre>
         <h4>
           <a href='#'>Step four</a>
@@ -83,7 +82,7 @@ const Document = ({ title, markdown, meta }) => {
           dolores veritatis molestiae.
         </p>
       </Markdown>
-      <DocumentActions />
+      <DocumentActions/>
     </StyledDocument>
   );
 };

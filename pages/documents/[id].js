@@ -2,25 +2,53 @@ import HomeLayout from '../../components/layouts/HomeLayout';
 import Document from '../../components/article/Document';
 import SideBar from '../../components/SideBar';
 import Meta from '../../components/Meta';
+import {useRouter} from "next/router";
+import {useContext, useEffect, useState} from "react";
+import {GlobalContext} from "../../context/global context/GlobalState";
 
 const index = () => {
-  const meta = {
-    author: 'Mary Doe',
-    views: 16000,
-    hearts: 5000,
-    date: 'August 8, 2021',
-  };
+  const router = useRouter()
+  const {id} = router.query
+  const [document, setDocument] = useState({})
+  const {langDocuments} = useContext(GlobalContext)
+
+  useEffect(() => {
+    if (!id) {
+      return
+    }
+
+    const doc = langDocuments.filter(document => document.id === id);
+    if (doc.length >= 1) {
+      // by default, author, hearts, and views are not in meta, so let's redefine it inside
+      const refinedDoc = {
+        ...doc[0],
+        meta: {...doc[0].meta, author: doc[0].author, hearts: doc[0].hearts, views: doc[0].views},
+      }
+      removeProps(refinedDoc, 'hearts', 'views', 'author')
+
+      setDocument(refinedDoc);
+    }
+  }, [id, langDocuments]);
+
+  const removeProps = (obj, ...propsName) => {
+    propsName.forEach((propName) => {
+      delete obj[propName]
+    })
+  }
 
   return (
     <HomeLayout smallerDiv={true}>
-      <Meta title='Reference Error something like that. Now this is a very long title | SortCode' />
+      <Meta title={document?.title?.substr(0, 1).toUpperCase() + document?.title?.substr(1)}/>
       <div>
-        <Document
-          title='Reference Error something like that. Now this is a very long title, '
-          markdown='nothing yet'
-          meta={meta}
-        />
-        <SideBar />
+        {!document.title ? <p style={{marginTop: '20px', color: '#444'}}>Loading...</p> : (
+          <Document
+            title={document.title}
+            markdown='nothing yet'
+            meta={document.meta}
+          />
+        )}
+
+        <SideBar/>
       </div>
     </HomeLayout>
   );

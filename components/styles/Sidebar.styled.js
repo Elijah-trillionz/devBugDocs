@@ -8,21 +8,27 @@ export const StyledSidebar = styled.aside`
     margin-right: 3px;
     margin-top: 13px;
   }
+
+  a {
+    color: unset;
+    text-decoration: none;
+  }
 `;
 
 export const StyledSidebarItem = styled.div`
-  background-color: #d4ebf4;
-  margin: 10px 0;
+  background-color: ${({disabled}) => disabled ? '#ccc' : '#d4ebf4'};
+  margin-top: 10px;
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
   padding: 10px;
   border-radius: 7px;
-  cursor: pointer;
+  cursor: ${({disabled}) => disabled ? 'default' : 'cursor'};
   transition: 0.3s ease-in-out;
-  margin-bottom: 20px;
+
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.hover};
+    background-color: ${({theme, disabled}) => disabled ? '#ccc' : theme.colors.hover};
   }
 
   i {

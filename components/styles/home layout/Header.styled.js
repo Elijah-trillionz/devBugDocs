@@ -1,8 +1,8 @@
-import styled, { keyframes } from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 
 export const StyledHeader = styled.header`
   padding: 15px 25px;
-  background-color: ${({ theme }) => theme.colors.header};
+  background-color: ${({theme}) => theme.colors.header};
   font-family: 'Poppins', sans-serif;
   position: relative;
   height: 300px;
@@ -31,14 +31,14 @@ export const Intro = styled.div`
 
   h2 {
     text-align: center;
-    color: ${({ theme }) => theme.colors.textWhite};
+    color: ${({theme}) => theme.colors.textWhite};
     font-size: 1.6rem;
     font-family: 'Lato', sans-serif;
     font-weight: 500;
     margin-bottom: 20px;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+  @media (max-width: ${({theme}) => theme.breakpoints.mobile}) {
     h2 {
       font-size: 1.4rem;
     }
@@ -52,7 +52,7 @@ export const DesignSvgOne = styled.div`
   transform: translateY(-40%);
   z-index: -1;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+  @media (max-width: ${({theme}) => theme.breakpoints.mobile}) {
     display: none;
   }
 `;

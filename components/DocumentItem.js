@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 import {
   StatsItems,
   StyledDocumentItem,
@@ -6,7 +6,7 @@ import {
 } from './styles/DocumentItem.styled';
 import Link from 'next/link';
 
-const DocumentItem = ({ document }) => {
+const DocumentItem = ({document}) => {
   const [views, setViews] = useState(document.views);
   const [title, setTitle] = useState(document.title);
 
@@ -31,33 +31,33 @@ const DocumentItem = ({ document }) => {
       let formatTitle = `${title.substr(0, 120)}...`;
       setTitle(formatTitle);
     }
-  }, [views, setViews]);
+  }, [views, setViews, title]);
 
   return (
     <StyledDocumentItem>
       <span>August 8th, 2021</span>
-      <Link href={`/${document.title}`}>
+      <Link href={`/documents/${document.id}`}>
         {/* should change to slug */}
-        <a>{title}</a>
+        <a>{title.substr(0, 1).toUpperCase() + title.substr(1)}</a>
       </Link>
       <div>
         <UserAvatar>
-          <i className='fas fa-user'></i>
+          <i className='fas fa-user'/>
           <Link href='/user'>
-            <a>{document.author}</a>
+            <a>{document.author.name}</a>
           </Link>
         </UserAvatar>
         <StatsItems>
           <div>
-            <i className='fas fa-heart'></i>
+            <i className='fas fa-heart'/>
             <p>{document.hearts}</p>
           </div>
           <div>
-            <i className='fas fa-eye'></i>
+            <i className='fas fa-eye'/>
             <p>{views}</p>
           </div>
         </StatsItems>
-        <span style={{ background: colors[document.type] }}></span>
+        <span style={{background: colors[document.tag]}}/>
       </div>
     </StyledDocumentItem>
   );

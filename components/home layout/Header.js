@@ -1,4 +1,4 @@
-import { ActionButton, StyledButton } from '../styles/Button.Styled';
+import {ActionButton, StyledButton} from '../styles/Button.Styled';
 import {
   StyledHeader,
   UpperHeader,
@@ -8,35 +8,43 @@ import {
   CircleConOne,
   CircleConTwo,
 } from '../styles/home layout/Header.styled';
+import Link from 'next/link'
 import DesignSvg from '../svgs/DesignSvg';
 import CircleSvg from '../svgs/CircleSvg';
 
-const Header = () => {
+const Header = ({title}) => {
+  // more to do on the header
   return (
     <StyledHeader>
       <DesignSvgOne>
-        <DesignSvg />
+        <DesignSvg/>
       </DesignSvgOne>
       <CircleConOne>
-        <CircleSvg />
+        <CircleSvg/>
       </CircleConOne>
       <UpperHeader>
         <p>SortCode</p>
         <StyledButton bg='#000' border='#000' color='#fff'>
-          Login with GitHub
+          <Link href='/user' as='/user'>
+            Login with GitHub
+          </Link>
         </StyledButton>
       </UpperHeader>
       <Intro>
         <div>
-          <h2>Document Your Coding Experience</h2>
-          <ActionButton border='#fff'>Get Started</ActionButton>
+          <h2>{title ? title : 'Document Your Coding Experience'}</h2>
+          <ActionButton border='#fff' color='#444'>
+            <Link href='/user' as='/user'>
+              Get Started
+            </Link>
+          </ActionButton>
         </div>
       </Intro>
       <DesignSvgTwo>
-        <DesignSvg />
+        <DesignSvg/>
       </DesignSvgTwo>
       <CircleConTwo>
-        <CircleSvg />
+        <CircleSvg/>
       </CircleConTwo>
     </StyledHeader>
   );
