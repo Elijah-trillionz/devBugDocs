@@ -50,7 +50,7 @@ const SideBar = () => {
         iconName='heart'
         iconbg='tomato'
         digit={prevMonthStats.mostHearts?.hearts}
-        href='/documents/user'
+        href={`/documents/${prevMonthStats.mostHearts?.id}`}
         disabled={prevMonthDocuments.length <= 0}
       />
       <SideBarItem
@@ -59,7 +59,7 @@ const SideBar = () => {
         iconName='heart'
         iconbg='tomato'
         digit={currentMonthStats.mostHearts?.hearts}
-        href='/documents/user'
+        href={`/documents/${currentMonthStats.mostHearts?.id}`}
         disabled={currentMonthDocuments.length <= 0}
       />
       <SideBarItem
@@ -78,7 +78,7 @@ const SideBar = () => {
         iconName='eye'
         iconbg='tomato'
         digit={prevMonthStats.mostViews?.views}
-        href='/documents/user'
+        href={`/documents/${prevMonthStats.mostViews?.id}`}
         disabled={prevMonthDocuments.length <= 0}
       />
       <SideBarItem
@@ -87,7 +87,7 @@ const SideBar = () => {
         iconName='eye'
         iconbg='tomato'
         digit={currentMonthStats.mostViews?.views}
-        href='/documents/user'
+        href={`/documents/${currentMonthStats.mostViews?.id}`}
         disabled={currentMonthDocuments.length <= 0}
       />
       <SideBarItem

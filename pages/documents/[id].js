@@ -10,14 +10,15 @@ const Index = () => {
   const router = useRouter()
   const {id} = router.query
   const [document, setDocument] = useState({})
-  const {langDocuments} = useContext(GlobalContext)
+  const {documents} = useContext(GlobalContext)
 
   useEffect(() => {
     if (!id) {
       return
     }
 
-    const doc = langDocuments.filter(document => document.id === id);
+
+    const doc = documents.filter(document => document.id === id);
     if (doc.length >= 1) {
       // by default, author, hearts, and views are not in meta, so let's redefine it inside
       const refinedDoc = {
@@ -28,7 +29,7 @@ const Index = () => {
 
       setDocument(refinedDoc);
     }
-  }, [id, langDocuments]);
+  }, [id, documents]);
 
   const removeProps = (obj, ...propsName) => {
     propsName.forEach((propName) => {
