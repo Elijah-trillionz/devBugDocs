@@ -6,7 +6,7 @@ import {useRouter} from "next/router";
 import {useContext, useEffect, useState} from "react";
 import {GlobalContext} from "../../context/global context/GlobalState";
 
-const index = () => {
+const Index = () => {
   const router = useRouter()
   const {id} = router.query
   const [document, setDocument] = useState({})
@@ -54,4 +54,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

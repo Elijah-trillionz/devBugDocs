@@ -7,7 +7,7 @@ import Meta from "../../components/Meta";
 import DocumentList from "../../components/DocumentList";
 import {FILTER_SEARCH_QUERY} from "../../context/types";
 
-const index = () => {
+const Index = () => {
   const [capQuery, setCapQuery] = useState([])
   const [filterType, setFilterType] = useState('')
   const router = useRouter();
@@ -21,6 +21,7 @@ const index = () => {
 
     searchQuery(query);
     setCapQuery(query.substr(0, 1).toUpperCase() + query.substr(1))
+    // eslint-disable-next-line
   }, [query, documents]);
 
   return (
@@ -39,4 +40,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

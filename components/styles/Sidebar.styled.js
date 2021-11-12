@@ -16,7 +16,7 @@ export const StyledSidebar = styled.aside`
 `;
 
 export const StyledSidebarItem = styled.div`
-  background-color: ${({disabled}) => disabled ? '#ccc' : '#d4ebf4'};
+  background-color: ${({disabled}) => disabled ? '#ddd' : '#d4ebf4'};
   margin-top: 10px;
   margin-bottom: 20px;
   display: flex;
@@ -28,7 +28,7 @@ export const StyledSidebarItem = styled.div`
 
 
   &:hover {
-    background-color: ${({theme, disabled}) => disabled ? '#ccc' : theme.colors.hover};
+    background-color: ${({theme, disabled}) => disabled ? '#ddd' : theme.colors.hover};
   }
 
   i {

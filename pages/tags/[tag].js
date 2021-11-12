@@ -21,6 +21,7 @@ const Index = () => {
 
       setCapTag(tag.substr(0, 1).toUpperCase() + tag.substr(1)) // capitalize tag
       getTagDocuments(tag.substr(0, tag.length - 1)) // remove plural
+      //  eslint-disable-next-line
     }, [tag])
 
     return (

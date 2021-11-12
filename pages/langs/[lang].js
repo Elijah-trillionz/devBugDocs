@@ -21,6 +21,7 @@ const Index = () => {
 
     setCapLang(lang.substr(0, 1).toUpperCase() + lang.substr(1))  // capitalized language
     getLangDocuments(lang)
+    //  eslint-disable-next-line
   }, [lang])
 
   return (
