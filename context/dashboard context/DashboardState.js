@@ -26,7 +26,7 @@ export const DashboardContext = createContext(initialState);
 
 export const DashboardProvider = ({children}) => {
   const [state, dispatch] = useReducer(dashboardReducer, initialState);
-  const url = 'http://localhost:5000/api/'
+  const url = 'https://sortcode-api.herokuapp.com/api/'
 
   // get current user
   const getCurrentUser = async () => {
