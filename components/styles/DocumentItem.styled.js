@@ -10,7 +10,7 @@ export const StyledDocumentItem = styled.div`
   transition: 0.3s ease-in-out;
 
   &:hover {
-    border-color: ${({ theme }) => theme.colors.header};
+    border-color: ${({theme}) => theme.colors.header};
   }
 
   & > span {
@@ -33,7 +33,7 @@ export const StyledDocumentItem = styled.div`
   }
 
   & > a:hover {
-    color: ${({ theme }) => theme.colors.header};
+    color: ${({theme}) => theme.colors.header};
   }
 
   & > div {
@@ -56,17 +56,17 @@ export const UserAvatar = styled.div`
   flex: 1;
   margin-bottom: 3px;
 
-  i {
-    background-color: #c4c4c4; // experimental, to be removed
-    font-size: 0.7rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 35px;
-    width: 35px;
+  img {
+    max-width: 100%;
+    height: auto;
     border-radius: 50%;
     margin-right: 6px;
-    color: #fff;
+  }
+
+  i {
+    font-size: 0.8rem;
+    color: #666;
+    margin-right: 5px;
   }
 
   a {
@@ -80,6 +80,7 @@ export const UserAvatar = styled.div`
   a:hover {
     text-decoration-color: #666;
   }
+
 `;
 
 export const StatsItems = styled.div`

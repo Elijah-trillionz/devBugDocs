@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import {createGlobalStyle} from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -11,22 +11,24 @@ const GlobalStyles = createGlobalStyle`
   body {
     font-family: 'Poppins', sans-serif;
     font-size: 1.15rem;
-    background: ${({ theme }) => theme.colors.body};
+    background: ${({theme}) => theme.colors.body};
     margin: 0;
   }
 
   ::-webkit-scrollbar {
-    width: 10px;
+    width: 5px;
     height: 5px;
   }
+
   ::-webkit-scrollbar-corner {
     height: 0;
   }
+
   ::-webkit-scrollbar-track {
-    background-color: #d4ebf4;
+    background-color: transparent;
     border-radius: 25px;
-    margin: 2px 0;
   }
+
   ::-webkit-scrollbar-thumb {
     background-color: #46A2C9;
     border-radius: 25px;

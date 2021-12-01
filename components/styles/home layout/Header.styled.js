@@ -1,4 +1,5 @@
 import styled, {keyframes} from 'styled-components';
+import {DropDown} from "./Home.styled";
 
 export const StyledHeader = styled.header`
   padding: 15px 25px;
@@ -12,6 +13,7 @@ export const StyledHeader = styled.header`
 export const UpperHeader = styled.div`
   display: flex;
   align-items: center;
+  position: relative;
 
   p {
     flex: 1;
@@ -20,7 +22,43 @@ export const UpperHeader = styled.div`
     font-weight: 400;
     font-size: 1.5rem;
   }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid ${({theme}) => theme.colors.button}
+  }
+
+  div:hover div {
+    display: block;
+  }
 `;
+
+export const HeaderDropDown = styled(DropDown)`
+  top: 100%;
+
+  &::after {
+    display: none;
+  }
+
+  p {
+    color: #000;
+    font-size: 0.75rem;
+    padding: 10px 0;
+    text-align: center;
+  }
+
+  li:first-child {
+    border-radius: 0;
+  }
+
+  li:last-child:hover {
+    background: tomato;
+    color: #fff;
+  }
+`
 
 export const Intro = styled.div`
   height: 50%;

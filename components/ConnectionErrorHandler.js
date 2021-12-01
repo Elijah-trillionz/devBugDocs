@@ -2,8 +2,8 @@ import {StyledConnectionErrorHandler} from "./styles/ConnectionErrorHandler.styl
 import {useContext} from "react";
 import {GlobalContext} from "../context/global context/GlobalState";
 
-const ConnectionErrorHandler = () => {
-  const {connectionError} = useContext(GlobalContext);
+const ConnectionErrorHandler = ({context}) => {
+  const {connectionError} = useContext(context);
 
   return (
     <StyledConnectionErrorHandler active={connectionError}>

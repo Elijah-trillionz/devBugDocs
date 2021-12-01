@@ -30,7 +30,9 @@ const Index = () => {
       <Meta title={`Documents on ${capLang} | SortCode`}/>
       <div>
         <DocumentList documents={langDocuments} setFilterType={setFilterType} capTitle={capLang}
-                      documentTypeName={SET_LANG_DOCUMENTS} _404Title={capLang}/>
+                      documentTypeName={SET_LANG_DOCUMENTS} _404msg={`There are no documents on ${capLang} yet`}
+                      dashboard={false}
+                      context={GlobalContext}/>
         <SideBar/>
       </div>
     </HomeLayout>

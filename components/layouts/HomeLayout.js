@@ -3,9 +3,9 @@ import Header from '../home layout/Header';
 import MicroNav from '../MicroNav';
 import {Home} from '../styles/home layout/Home.styled';
 import ConnectionErrorHandler from "../ConnectionErrorHandler";
+import {GlobalContext} from "../../context/global context/GlobalState";
 
 const HomeLayout = ({children, smallerDiv, title}) => {
-
   return (
     // smaller divs are for articles page, we drastically reduce the horizontal margins
     <Home smallerDiv={smallerDiv}>
@@ -13,7 +13,7 @@ const HomeLayout = ({children, smallerDiv, title}) => {
       <MicroNav mainTitle={title?.mainTitle}/>
       {children}
       <Footer/>
-      <ConnectionErrorHandler/>
+      <ConnectionErrorHandler context={GlobalContext}/>
     </Home>
   );
 };

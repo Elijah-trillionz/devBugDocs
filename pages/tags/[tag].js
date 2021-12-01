@@ -20,7 +20,7 @@ const Index = () => {
       }
 
       setCapTag(tag.substr(0, 1).toUpperCase() + tag.substr(1)) // capitalize tag
-      getTagDocuments(tag.substr(0, tag.length - 1)) // remove plural
+      getTagDocuments(tag) // remove plural
       //  eslint-disable-next-line
     }, [tag])
 
@@ -30,7 +30,9 @@ const Index = () => {
         <Meta title={`Documents on Tag: ${capTag} | SortCode`}/>
         <div>
           <DocumentList documents={tagDocuments} setFilterType={setFilterType} capTitle={`${capTag} tag`}
-                        documentTypeName={SET_TAG_DOCUMENTS} _404Title={capTag}/>
+                        documentTypeName={SET_TAG_DOCUMENTS} _404msg={`There are no documents on ${capTag} yet`}
+                        dashboard={false}
+                        context={GlobalContext}/>
           <SideBar/>
         </div>
       </HomeLayout>

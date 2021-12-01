@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Home = styled.div`
   & > div {
     display: block;
-    margin: 10px 30px;
+    padding: 10px 30px;
   }
 
   main {
@@ -14,7 +14,7 @@ export const Home = styled.div`
     & > div {
       display: grid;
       grid-template-columns: auto 250px;
-      margin: 10px 40px;
+      padding: 10px 40px;
     }
 
     main {
@@ -29,13 +29,13 @@ export const Home = styled.div`
 
   @media (min-width: ${({theme}) => theme.breakpoints.tabletL}) {
     & > div {
-      margin: ${({smallerDiv}) => (smallerDiv ? '10px 40px' : '10px 70px')};
+      padding: ${({smallerDiv}) => (smallerDiv ? '10px 40px' : '10px 70px')};
     }
   }
 
   @media (min-width: ${({theme}) => theme.breakpoints.laptop}) {
     & > div {
-      margin: 10px 70px;
+      padding: 10px 70px;
     }
   }
 `;

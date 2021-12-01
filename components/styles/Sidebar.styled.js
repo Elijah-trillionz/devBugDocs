@@ -39,7 +39,7 @@ export const StyledSidebarItem = styled.div`
     max-height: 30px;
     min-width: 30px;
     margin-right: 8px;
-    border-radius: 4px;
+    border-radius: 7px;
     font-size: 0.75rem;
     color: #fff;
   }

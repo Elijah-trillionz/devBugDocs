@@ -122,7 +122,7 @@ export const StyledSearchModal = styled.div`
   align-items: center;
   justify-content: center;
   box-shadow: 10px 20px 20px 0 hsla(0, 100%, 0%, 0.3);
-  z-index: 1;
+  z-index: 12;
   padding: 25px 0;
   transition: 0.4s ease-in-out;
 
@@ -175,6 +175,10 @@ export const BodyOverlay = styled.div`
   pointer-events: ${({active}) => (active ? 'all' : 'none')};
   opacity: ${({active}) => (active ? 1 : 0)};
   transition: 0.4s ease-in-out;
+  width: 100%;
+  height: 100%;
+  z-index: 11;
+  margin: 0 !important;
 `;
 
 export const BackToTopModal = styled.div`

@@ -1,18 +1,16 @@
-import {DropDown, DocumentItemAction} from "./styles/home layout/Home.styled";
-import EmptyDocs from "./EmptyDocs";
-import DocumentItem from "./DocumentItem";
-import {sortDocument} from "../utils/utils";
-import {useContext, useEffect, useState} from "react";
-import {GlobalContext} from "../context/global context/GlobalState";
-import NestedErrorHandler from "./NestedErrorHandler";
+import {DropDown, DocumentItemAction} from "../styles/home layout/Home.styled";
+import EmptyDocs from "../EmptyDocs";
+import DocumentItem from "../DocumentItem";
+import {sortDocument} from "../../utils/utils";
+import {useContext, useState} from "react";
+import NestedErrorHandler from "../NestedErrorHandler";
 
-const DocumentList = ({documents, setFilterType, capTitle, documentTypeName, _404msg, context, dashboard}) => {
+const DocumentList = ({documents, capTitle, documentTypeName, _404Title, context}) => {
   const [loading, setLoading] = useState(false)
   const {setDispatch, initLoading, error} = useContext(context)
 
   const sortDocumentByViews = () => {
     sortDocument(documents, 'views');
-    setFilterType('Most Viewed');
     // a minor delay
     setLoading(true)
     setTimeout(() => {
@@ -23,7 +21,6 @@ const DocumentList = ({documents, setFilterType, capTitle, documentTypeName, _40
 
   const sortDocumentByHearts = () => {
     sortDocument(documents, 'hearts');
-    setFilterType('Most Loved');
     // a minor delay
     setLoading(true)
     setTimeout(() => {
@@ -52,12 +49,12 @@ const DocumentList = ({documents, setFilterType, capTitle, documentTypeName, _40
               </div>
             </DocumentItemAction>
             {documents.length <= 0 ?
-              <EmptyDocs msg={_404msg}/> :
+              <EmptyDocs msg={`There are no ${_404Title} yet`}/> :
               (
                 loading ? <p style={{fontSize: '0.8rem', marginTop: '20px', color: '#444'}}>Loading..</p> :
                   <>
-                    {documents.map((document, index) => (
-                      <DocumentItem document={document} key={index} dashboard={dashboard} index={index + 1}/>
+                    {documents.map((document) => (
+                      <DocumentItem document={document} key={document.id} dashboard={true}/>
                     ))
                     }
                   </>

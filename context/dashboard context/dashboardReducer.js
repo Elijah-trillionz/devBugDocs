@@ -9,7 +9,7 @@ import {
   SET_CURRENT_MONTH_DOCUMENTS,
   SET_PREV_MONTH_DOCUMENTS,
   SEARCH_QUERY,
-  FILTER_SEARCH_QUERY, SET_AUTH_ERROR, SET_SUCCESS, SET_USER
+  FILTER_SEARCH_QUERY, SET_AUTH_ERROR, SET_SUCCESS, SET_USER, SET_USER_DOCS, SET_USER_DRAFTS
 } from "../types";
 
 const searchQuery = (documents, query) => {
@@ -18,23 +18,8 @@ const searchQuery = (documents, query) => {
   });
 }
 
-const globalAppReducer = (state, action) => {
+const dashboardReducer = (state, action) => {
   switch (action.type) {
-    case SET_ALL_DOCUMENTS:
-      return {
-        ...state,
-        documents: action.payload
-      };
-    case SET_LANG_DOCUMENTS:
-      return {
-        ...state,
-        langDocuments: action.payload
-      };
-    case SET_TAG_DOCUMENTS:
-      return {
-        ...state,
-        tagDocuments: action.payload
-      };
     case SET_CURRENT_MONTH_DOCUMENTS:
       return {
         ...state,
@@ -59,6 +44,16 @@ const globalAppReducer = (state, action) => {
       return {
         ...state,
         user: action.payload
+      };
+    case SET_USER_DOCS:
+      return {
+        ...state,
+        userDocs: action.payload
+      };
+    case SET_USER_DRAFTS:
+      return {
+        ...state,
+        userDrafts: action.payload
       };
     case SET_INIT_LOADING:
       return {
@@ -88,11 +83,11 @@ const globalAppReducer = (state, action) => {
     case SET_SUCCESS:
       return {
         ...state,
-        successMsg: action.payload
+        success: action.payload
       };
     default:
       return state;
   }
 };
 
-export default globalAppReducer;
+export default dashboardReducer;

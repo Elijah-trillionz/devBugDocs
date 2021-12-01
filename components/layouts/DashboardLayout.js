@@ -1,11 +1,22 @@
 import Meta from '../Meta';
+import ConnectionErrorHandler from "../ConnectionErrorHandler";
+import {StyledDashboard} from "../styles/Dashboard layout/Dashboard.styled";
+import Header from "../dashboard layout/Header";
+import {useContext} from "react";
+import {DashboardContext} from "../../context/dashboard context/DashboardState";
+import Footer from "../Footer";
 
-const DashboardLayout = () => {
+const DashboardLayout = ({children}) => {
+  const {user} = useContext(DashboardContext)
+
   return (
-    <div>
-      <h2>SortCode dashboard</h2>
-      <Meta title="User's name" />
-    </div>
+    <StyledDashboard>
+      <Header/>
+      <Meta title={`${user.user ? `${user.user.name} Dashboard` : 'loading...'} | SortCode`}/>
+      {children}
+      <Footer/>
+      <ConnectionErrorHandler context={DashboardContext}/>
+    </StyledDashboard>
   );
 };
 

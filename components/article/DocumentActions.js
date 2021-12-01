@@ -1,30 +1,46 @@
-import { LikeDocument, ShareDocument } from '../styles/Document.styled';
+import {LikeDocument} from '../styles/Document.styled';
+import {useContext, useEffect, useState} from "react";
+import {DashboardContext} from "../../context/dashboard context/DashboardState";
+import {verifyMember} from "../../utils/utils";
 
-const DocumentActions = () => {
+const DocumentActions = ({id, hearts}) => {
+  const {likeDocument, success} = useContext(DashboardContext);
+  const [stateHearts, setStateHearts] = useState(hearts);
+  const [defColor, setDefColor] = useState(false);
+
+  const incrementLike = () => {
+    const likeExists = verifyMember(id, '__.e-doc-li-ke-s');
+    if (likeExists) return;
+
+    setStateHearts((prev) => prev + 1);
+    likeDocument(id)
+  }
+
+  const addDefColor = () => {
+    const likeExists = verifyMember(id, '__.e-doc-li-ke-s');
+    if (likeExists) setDefColor(true);
+    else setDefColor(false);
+  }
+
+  useEffect(() => {
+    addDefColor()
+  }, []);
+
+  useEffect(() => {
+    addDefColor()
+  }, [success]);
+
   return (
     <div>
-      <LikeDocument>
+      <LikeDocument defColor={defColor}>
         <h3>Leave a heart</h3>
-        <i className='fas fa-heart'></i>
+        <p>
+          {stateHearts}
+          <i className='fas fa-heart' onClick={incrementLike}/>
+        </p>
       </LikeDocument>
-      <ShareDocument>
-        <h3>Please Share</h3>
-        <div>
-          <i className='fab fa-facebook'></i>
-          <i className='fab fa-twitter'></i>
-          <i className='fab fa-linkedin'></i>
-          <i className='fab fa-reddit'></i>
-          <i className='fab fa-hacker-news-square'></i>
-        </div>
-      </ShareDocument>
     </div>
   );
 };
-
-// hacker ff6600
-// facebook 3b5998
-// twitter 00acee
-// reddit #ff4500
-// linkedin #0077b5
 
 export default DocumentActions;

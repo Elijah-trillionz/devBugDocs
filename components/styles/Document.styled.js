@@ -1,11 +1,11 @@
-import styled, { keyframes } from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 
 export const StyledDocument = styled.article`
   padding-right: 15px;
 
   h1 {
     padding: 10px 0;
-    font-size: ${({ longTitle }) => (longTitle ? '1.4rem' : '2rem')};
+    font-size: ${({longTitle}) => (longTitle ? '1.4rem' : '2rem')};
     text-transform: capitalize;
     font-family: 'Ubuntu', sans-serif;
     color: #333;
@@ -21,10 +21,10 @@ export const StyledDocument = styled.article`
     height: 2.3px;
     border-radius: 3px;
     margin-top: 6px;
-    background-color: ${({ theme }) => theme.colors.header};
+    background-color: ${({theme}) => theme.colors.header};
   }
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+  @media (min-width: ${({theme}) => theme.breakpoints.tablet}) {
     border-right: 1px solid #ccc;
     margin-right: 20px;
   }
@@ -91,12 +91,17 @@ export const Markdown = styled.div`
     margin: 3px;
   }
 
+  pre {
+    max-width: 100%;
+    width: auto;
+    overflow-x: scroll;
+  }
+
   pre > code {
     background-color: #000;
-    color: #fff;
     font-size: 0.9rem;
-    display: block;
     padding: 10px;
+    margin: 0;
   }
 
   ul,
@@ -123,69 +128,39 @@ export const Markdown = styled.div`
   }
 `;
 
-// document actions
-const breathing = keyframes`
-  0% {
-    transform: scale(1)
-  }
-  50% {
-    transform: scale(1.14)
-  }
-  100% {
-    transform: scale(1)
-  }
-`;
 
+// document actions
 export const LikeDocument = styled.div`
   margin: 20px 0;
   padding: 20px 0;
   border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
   display: flex;
   align-items: center;
 
   h3 {
     flex: 1;
+    font-size: 0.85rem;
+  }
+
+  p {
+    font-size: 2rem;
+    color: #444;
+    margin-right: 30px;
+    display: flex;
+    align-items: center;
+    font-family: 'ubuntu', sans-serif;
   }
 
   i {
-    font-size: 3.5rem;
-    margin-right: 30px;
+    font-size: 3rem;
     cursor: pointer;
-    color: #444;
-    animation: ${breathing} 1.3s linear infinite;
+    margin-left: 10px;
+    color: ${({defColor}) => defColor ? 'tomato' : '#444'};
     transition: 0.3s ease-in-out;
   }
 
   i:hover {
     color: tomato;
-  }
-`;
-
-export const ShareDocument = styled(LikeDocument)`
-  i {
-    font-size: 1.7rem;
-    margin-right: 14px;
-    animation: none;
-    transition: 0.2s ease-in-out;
-  }
-
-  .fa-facebook:hover {
-    color: #3b5998;
-  }
-
-  .fa-twitter:hover {
-    color: #00acee;
-  }
-
-  .fa-hacker-news-square:hover {
-    color: #ff6600;
-  }
-
-  .fa-reddit:hover {
-    color: #ff4500;
-  }
-
-  .fa-linkedin:hover {
-    color: #0077b5;
   }
 `;
