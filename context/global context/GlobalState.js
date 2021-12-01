@@ -44,7 +44,7 @@ export const GlobalContext = createContext(initialValue);
 
 export const GlobalProvider = ({children}) => {
   const [state, dispatch] = useReducer(globalAppReducer, initialValue);
-  const url = 'http://localhost:5000/api/'
+  const url = 'https://sortcode-api.herokuapp.com/api/'
 
   const fetcher = async (path) => {
     try {
