@@ -10,7 +10,7 @@ import {DashboardContext} from "../context/dashboard context/DashboardState";
 import CreateDocModal from "./CreateDocModal";
 import {BodyOverlay} from "./styles/MicroNav.styled";
 
-const DocumentItem = ({document, dashboard, index}) => {
+const DocumentItem = ({document, dashboard}) => {
   const {user} = useContext(DashboardContext)
   const [views, setViews] = useState(document.views);
   const [title, setTitle] = useState(document.title);
@@ -51,7 +51,7 @@ const DocumentItem = ({document, dashboard, index}) => {
           : (
             <Link href={`/documents/${document.id}${document.draft ? '?type=draft' : ''}`}>
               {/* should change to slug */}
-              <a>{title.substr(0, 1).toUpperCase() + title.substr(1)} - {index}</a>
+              <a>{title.substr(0, 1).toUpperCase() + title.substr(1)}</a>
             </Link>
           )}
         <div>

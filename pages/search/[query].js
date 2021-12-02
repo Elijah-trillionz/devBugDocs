@@ -8,8 +8,8 @@ import DocumentList from "../../components/DocumentList";
 import {FILTER_SEARCH_QUERY} from "../../context/types";
 
 const Index = () => {
-  const [capQuery, setCapQuery] = useState([])
-  const [filterType, setFilterType] = useState('')
+  const [capQuery, setCapQuery] = useState([]);
+  const [filterType, setFilterType] = useState('');
   const router = useRouter();
   const {query} = router.query;
   const {documents, searchQuery, searchResults: results} = useContext(GlobalContext);
@@ -33,7 +33,8 @@ const Index = () => {
       <div>
         <DocumentList documents={results} capTitle={`Search query: ${capQuery}`}
                       _404Title={`the search query: ${capQuery}`} setFilterType={setFilterType}
-                      documentTypeName={FILTER_SEARCH_QUERY}/>
+                      documentTypeName={FILTER_SEARCH_QUERY} context={GlobalContext} _404msg={'Not Found'}
+                      dashboard={false}/>
         <SideBar/>
       </div>
     </HomeLayout>
