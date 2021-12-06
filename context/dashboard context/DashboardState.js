@@ -83,7 +83,7 @@ export const DashboardProvider = ({children}) => {
   }
 
   const incrementLikes = async (id) => {
-    const res = await postRequest(`documents/hearts/${id}`, {}, 'PUT');
+    const res = await postRequest(`documents/hearts/${id}`, {}, 'PUT', true);
 
     if (res.error) {
       if (res.statusCode === 401) logUserOut();
@@ -97,7 +97,7 @@ export const DashboardProvider = ({children}) => {
   }
 
   const incrementViews = async (id) => {
-    const res = await postRequest(`documents/views/${id}`, {}, 'PUT');
+    const res = await postRequest(`documents/views/${id}`, {}, 'PUT', true);
 
     if (res.error) {
       if (res.statusCode === 401) logUserOut();
@@ -143,11 +143,12 @@ export const DashboardProvider = ({children}) => {
   }
 
   // actions. constants
-  const postRequest = async (path, body, method) => {
+  const postRequest = async (path, body, method, notPrivate) => {
     const token = getDataFromCookie('access_token');
-    if (!token) {
+    if (!token && !notPrivate) {
       return logUserOut()
     }
+
     try {
       const res = await fetch(`${url}${path}`, {
         method,

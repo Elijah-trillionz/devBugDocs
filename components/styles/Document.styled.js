@@ -92,16 +92,16 @@ export const Markdown = styled.div`
   }
 
   pre {
-    max-width: 100%;
-    width: auto;
-    overflow-x: scroll;
+    max-width: 700px;
   }
 
   pre > code {
-    background-color: #000;
+    width: 100%;
+    background-color: #0e1217;
     font-size: 0.9rem;
-    padding: 10px;
+    padding: 20px 15px;
     margin: 0;
+    overflow-x: scroll;
   }
 
   ul,

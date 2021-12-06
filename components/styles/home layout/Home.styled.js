@@ -13,7 +13,7 @@ export const Home = styled.div`
   @media (min-width: ${({theme}) => theme.breakpoints.tablet}) {
     & > div {
       display: grid;
-      grid-template-columns: auto 250px;
+      grid-template-columns: 70% 30%;
       padding: 10px 40px;
     }
 
@@ -29,6 +29,7 @@ export const Home = styled.div`
 
   @media (min-width: ${({theme}) => theme.breakpoints.tabletL}) {
     & > div {
+      grid-template-columns: 75% 25%;
       padding: ${({smallerDiv}) => (smallerDiv ? '10px 40px' : '10px 70px')};
     }
   }

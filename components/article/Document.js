@@ -25,7 +25,7 @@ const Document = ({document}) => {
   useEffect(() => {
     const viewed = verifyMember(document.id, '__.e-doc-vi-ew-s') // code for views :2nd param
     if (viewed) return;
-    
+
     updateViews(document.id);
   }, []);
 
@@ -34,9 +34,9 @@ const Document = ({document}) => {
       <h1>{document.title}</h1>
       <DocumentMeta meta={document.meta}/>
       <Markdown>
-        {/*<div dangerouslySetInnerHTML={{*/}
-        {/*  __html: parsedMarkdown*/}
-        {/*}}/>*/}
+        <div dangerouslySetInnerHTML={{
+          __html: parsedMarkdown
+        }}/>
         <p>In development</p>
       </Markdown>
       <DocumentActions id={document.id} hearts={document.meta.hearts}/>
