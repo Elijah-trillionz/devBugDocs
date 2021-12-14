@@ -57,7 +57,7 @@ const DocumentList = ({documents, setFilterType, capTitle, documentTypeName, _40
                 loading ? <p style={{fontSize: '0.8rem', marginTop: '20px', color: '#444'}}>Loading..</p> :
                   <>
                     {documents.map((document) => (
-                      <DocumentItem document={document} key={dashboard.id} dashboard={dashboard}/>
+                      <DocumentItem document={document} key={document.id} dashboard={dashboard}/>
                     ))
                     }
                   </>

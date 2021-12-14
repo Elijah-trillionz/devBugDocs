@@ -112,7 +112,7 @@ const CreateDocModal = ({active, setActive, editing, docToEdit}) => {
         <ModalBody>
           {settingsView ? (
             <SettingsView language={language} selectTag={selectTag} selectLanguage={selectLanguage} tag={tag}
-                          editing={editing} id={docToEdit.id}/>
+                          editing={editing} id={editing ? docToEdit.id : 0}/>
           ) : (
             preview ? (
               <ModalPreview>
@@ -163,12 +163,12 @@ const CreateDocModal = ({active, setActive, editing, docToEdit}) => {
           )}
         </ModalFooter>
         {error &&
-        <ModalError>
-          <p>
-            <i className={'fas fa-exclamation-circle'}/> {' '}
-            {error}
-          </p>
-        </ModalError>
+          <ModalError>
+            <p>
+              <i className={'fas fa-exclamation-circle'}/> {' '}
+              {error}
+            </p>
+          </ModalError>
         }
       </StyledCreateDocModal>
 
