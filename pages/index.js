@@ -19,7 +19,7 @@ const Home = () => {
         description='Share your errors, solutions for reference.'
         canonical='https://dev.to/elijahtrillionz'
         openGraph={{
-          url: '/',
+          url: 'https://sortcode.vercel.app',
           title: 'SortCode | Experienced Dev Experience',
           description:
             "Share your errors, and solutions for; which you can easily refer back to when in need. It's like documenting your coding experience",
