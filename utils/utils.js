@@ -1,4 +1,4 @@
-import { v4 } from "uuid";
+import { v4 } from 'uuid';
 
 export const sortDocuments = (documents, type) => {
   documents.sort((a, b) => b[type] - a[type]);
@@ -6,13 +6,13 @@ export const sortDocuments = (documents, type) => {
 };
 
 export const getDataFromCookie = (key) => {
-  const allCookies = document.cookie.split(";");
+  const allCookies = document.cookie.split(';');
 
   const cookie = allCookies.filter((cookie) => {
     return cookie.includes(`_${key}_`);
   });
 
-  return cookie.length >= 1 && cookie[0].trim().split("=")[1];
+  return cookie.length >= 1 && cookie[0].trim().split('=')[1];
 };
 
 export const setCookie = (key, value) => {
@@ -32,11 +32,11 @@ export const deleteCookie = (key) => {
 };
 
 export const colors = {
-  javascript: "#f0db4f",
-  react: "#61dafb",
-  vue: "#41B883",
-  node: "#3C873A",
-  python: "#4b8bbe",
+  javascript: '#f0db4f',
+  react: '#61dafb',
+  vue: '#41B883',
+  node: '#3C873A',
+  python: '#4b8bbe',
 };
 
 // for recording likes and views in local storage
@@ -58,10 +58,10 @@ export const verifyMember = (id, name) => {
   return member ? member.id : false;
 };
 
-export const url = "http://localhost:5000/api/";
+export const url = 'https://sortcode-api.herokuapp.com/api/';
 
 export const signIn = () => {
   const state = v4();
-  localStorage.setItem("github-state", state);
+  localStorage.setItem('github-state', state);
   window.location = `https://github.com/login/oauth/authorize?client_id=2c05d57e6bffd2b25207&state=${state}`;
 };
