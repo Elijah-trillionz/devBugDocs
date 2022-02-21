@@ -59,7 +59,7 @@ const DocumentItem = ({document, dashboard}) => {
             <div>
               <img src={author.imgUri} alt={`${author.name} avatar`} width={35}/>
             </div>
-            <Link href='/user'>
+            <Link href={`/users/${author.id}`}>
               <a>{author.name}</a>
             </Link>
           </UserAvatar>

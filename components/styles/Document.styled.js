@@ -1,13 +1,14 @@
-import styled, {keyframes} from 'styled-components';
+import styled, { keyframes } from "styled-components";
+import { StyledSearchModal } from "./MicroNav.styled";
 
 export const StyledDocument = styled.article`
   padding-right: 15px;
 
   h1 {
     padding: 10px 0;
-    font-size: ${({longTitle}) => (longTitle ? '1.4rem' : '2rem')};
+    font-size: ${({ longTitle }) => (longTitle ? "1.4rem" : "2rem")};
     text-transform: capitalize;
-    font-family: 'Ubuntu', sans-serif;
+    font-family: "Ubuntu", sans-serif;
     color: #333;
     margin-bottom: 10px;
     line-height: 1.5;
@@ -16,15 +17,15 @@ export const StyledDocument = styled.article`
 
   h1::after {
     display: block;
-    content: ' ';
+    content: " ";
     width: 30%;
     height: 2.3px;
     border-radius: 3px;
     margin-top: 6px;
-    background-color: ${({theme}) => theme.colors.header};
+    background-color: ${({ theme }) => theme.colors.header};
   }
 
-  @media (min-width: ${({theme}) => theme.breakpoints.tablet}) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     border-right: 1px solid #ccc;
     margin-right: 20px;
   }
@@ -43,7 +44,7 @@ export const Markdown = styled.div`
   h6 {
     margin-top: 20px;
     margin-bottom: 5px;
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
   }
 
   h2 a,
@@ -128,7 +129,6 @@ export const Markdown = styled.div`
   }
 `;
 
-
 // document actions
 export const LikeDocument = styled.div`
   margin: 20px 0;
@@ -149,18 +149,21 @@ export const LikeDocument = styled.div`
     margin-right: 30px;
     display: flex;
     align-items: center;
-    font-family: 'ubuntu', sans-serif;
+    font-family: "ubuntu", sans-serif;
   }
 
   i {
-    font-size: 3rem;
+    font-size: 2.5rem;
     cursor: pointer;
     margin-left: 10px;
-    color: ${({defColor}) => defColor ? 'tomato' : '#444'};
+    color: ${({ defColor }) => (defColor ? "tomato" : "#444")};
+    border: 3px solid transparent;
     transition: 0.3s ease-in-out;
   }
 
   i:hover {
-    color: tomato;
+    color: #f5ac41;
   }
 `;
+
+export const StyledLoginModal = styled(StyledSearchModal)``;

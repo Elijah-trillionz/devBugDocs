@@ -1,16 +1,16 @@
 const months = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
 ];
 
 const date = new Date();
@@ -21,4 +21,8 @@ const thisDay = date.getDate();
 
 export const formattedDate = `${months[thisMonth]} ${thisDay}, ${year}`;
 export const formattedMonth = months[thisMonth];
-export const previousMonth = months[prevMonth]
+export const previousMonth = months[prevMonth];
+
+export const timestampDate = (month, date, year) => {
+  return new Date(year, months.indexOf(month), date + 1).valueOf();
+};

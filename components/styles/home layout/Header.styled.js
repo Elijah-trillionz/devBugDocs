@@ -1,13 +1,13 @@
-import styled, {keyframes} from 'styled-components';
-import {DropDown} from "./Home.styled";
+import styled from "styled-components";
+import { DropDown } from "../DocumentPageAction.styled";
 
 export const StyledHeader = styled.header`
   padding: 15px 25px;
-  background-color: ${({theme}) => theme.colors.header};
-  font-family: 'Poppins', sans-serif;
+  background-color: ${({ theme }) => theme.colors.header};
+  font-family: "Poppins", sans-serif;
   position: relative;
   height: 300px;
-  z-index: 0;
+  z-index: 2;
 `;
 
 export const UpperHeader = styled.div`
@@ -17,10 +17,15 @@ export const UpperHeader = styled.div`
 
   p {
     flex: 1;
-    font-family: 'Ubuntu', sans-serif;
+    font-family: "Ubuntu", sans-serif;
     color: #fff;
     font-weight: 400;
     font-size: 1.5rem;
+  }
+
+  a {
+    color: #fff;
+    text-decoration: none;
   }
 
   img {
@@ -28,11 +33,7 @@ export const UpperHeader = styled.div`
     height: auto;
     border-radius: 50%;
     cursor: pointer;
-    border: 2px solid ${({theme}) => theme.colors.button}
-  }
-
-  div:hover div {
-    display: block;
+    border: 2px solid ${({ theme }) => theme.colors.button};
   }
 `;
 
@@ -58,7 +59,7 @@ export const HeaderDropDown = styled(DropDown)`
     background: tomato;
     color: #fff;
   }
-`
+`;
 
 export const Intro = styled.div`
   height: 50%;
@@ -69,14 +70,14 @@ export const Intro = styled.div`
 
   h2 {
     text-align: center;
-    color: ${({theme}) => theme.colors.textWhite};
+    color: ${({ theme }) => theme.colors.textWhite};
     font-size: 1.6rem;
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
     font-weight: 500;
     margin-bottom: 20px;
   }
 
-  @media (max-width: ${({theme}) => theme.breakpoints.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     h2 {
       font-size: 1.4rem;
     }
@@ -90,7 +91,7 @@ export const DesignSvgOne = styled.div`
   transform: translateY(-40%);
   z-index: -1;
 
-  @media (max-width: ${({theme}) => theme.breakpoints.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     display: none;
   }
 `;

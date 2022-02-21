@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import {HeaderDropDown} from "../home layout/Header.styled";
+import styled from "styled-components";
+import { HeaderDropDown } from "../home layout/Header.styled";
 
 export const StyledHeader = styled.header`
   background-color: #fff;
@@ -7,7 +7,8 @@ export const StyledHeader = styled.header`
   display: flex;
   align-items: center;
   position: fixed;
-  box-shadow: ${({sticky}) => sticky ? '0 3px 4px 0 rgba(215,215,215,.75)' : 'unset'};
+  box-shadow: ${({ sticky }) =>
+    sticky ? "0 3px 4px 0 rgba(215,215,215,.75)" : "unset"};
   top: 0;
   width: 100%;
   transition: 0.3s ease-in-out;
@@ -15,14 +16,18 @@ export const StyledHeader = styled.header`
 
   h2 {
     flex: 1;
-    font-family: 'ubuntu', sans-serif;
+    font-family: "ubuntu", sans-serif;
     font-size: 1.45rem;
-    cursor: pointer;
+  }
+
+  a {
+    color: #000;
+    text-decoration: none;
     transition: 0.3s ease-in-out;
   }
 
-  h2:hover {
-    color: ${({theme}) => theme.colors.header};
+  a:hover {
+    color: ${({ theme }) => theme.colors.header};
   }
 
   button {
@@ -31,20 +36,20 @@ export const StyledHeader = styled.header`
     padding: 0 10px;
     height: 40px;
     border-radius: 10px;
-    border: 2px solid ${({theme}) => theme.colors.header};
+    border: 2px solid ${({ theme }) => theme.colors.header};
     background: transparent;
     cursor: pointer;
-    font-family: 'poppins', sans-serif;
+    font-family: "poppins", sans-serif;
     font-size: 0.65rem;
     outline: none;
   }
 
-  @media (max-width: ${({theme}) => theme.breakpoints.mobileL}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
     button {
       display: none;
     }
   }
-`
+`;
 
 export const UserAvatar = styled.div`
   height: 40px;
@@ -62,16 +67,16 @@ export const UserAvatar = styled.div`
     max-width: 100%;
     height: auto;
     border-radius: 50%;
-    border: 2px solid ${({theme}) => theme.colors.header};
+    border: 2px solid ${({ theme }) => theme.colors.header};
   }
 
   & > p {
     display: none;
   }
 
-  @media (min-width: ${({theme}) => theme.breakpoints.mobile}) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
     padding: 0 10px;
-    border: 2px solid ${({theme}) => theme.colors.header};
+    border: 2px solid ${({ theme }) => theme.colors.header};
     border-radius: 10px;
 
     img {
@@ -84,26 +89,29 @@ export const UserAvatar = styled.div`
       padding-right: 5px;
     }
   }
-`
+`;
 
 export const DashboardHeaderDropDown = styled(HeaderDropDown)`
   top: 105%;
   right: 5%;
-  box-shadow: 1px 2px 2px 0 rgba(213, 213, 213, 0.75), 2px 4px 4px 0 rgba(213, 213, 213, 0.75),
-  4px 8px 8px 0 rgba(213, 213, 213, 0.75), 12px 22px 22px 0 rgba(213, 213, 213, 0.75);
+  box-shadow: 1px 2px 2px 0 rgba(213, 213, 213, 0.75),
+    2px 4px 4px 0 rgba(213, 213, 213, 0.75),
+    4px 8px 8px 0 rgba(213, 213, 213, 0.75),
+    12px 22px 22px 0 rgba(213, 213, 213, 0.75);
 
   &::after {
-    content: ' ';
+    content: " ";
     display: block;
     border-width: 9px;
-    border-color: transparent transparent ${({theme}) => theme.colors.hover} transparent;
+    border-color: transparent transparent ${({ theme }) => theme.colors.hover}
+      transparent;
     border-style: solid;
     position: absolute;
     bottom: 100%;
     right: 7px;
   }
 
-  @media (min-width: ${({theme}) => theme.breakpoints.mobile}) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
     p {
       display: none;
     }
@@ -112,4 +120,4 @@ export const DashboardHeaderDropDown = styled(HeaderDropDown)`
       border-radius: 6px 6px 0 0;
     }
   }
-`
+`;
