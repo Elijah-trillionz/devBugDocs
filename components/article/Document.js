@@ -14,8 +14,8 @@ const Document = ({ document }) => {
   const [likedDocument, setLikedDocument] = useState(false);
 
   useEffect(() => {
-    if (user.user.hearts) {
-      const likedDocument = user.user.hearts.find(
+    if (user?.user?.hearts) {
+      const likedDocument = user?.user?.hearts.find(
         (likedDocumentId) => likedDocumentId === document.id
       );
       setLikedDocument(!!likedDocument);
