@@ -85,10 +85,11 @@ export const Markdown = styled.div`
   }
 
   code {
-    background-color: #d4ebf4;
+    background-color: #ddd;
     display: inline-block;
-    padding: 0 5px;
-    border-radius: 5px;
+    padding: 0 3px;
+    border-radius: 4px;
+    font-size: smaller;
     margin: 3px;
   }
 
@@ -163,6 +164,26 @@ export const LikeDocument = styled.div`
 
   i:hover {
     color: #f5ac41;
+  }
+`;
+
+export const EditDocumentHandler = styled.div`
+  margin: 15px 0;
+
+  div {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  p {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #555;
+  }
+
+  i {
+    color: #555;
   }
 `;
 

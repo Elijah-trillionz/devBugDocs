@@ -4,6 +4,7 @@ import {
   deleteCookie,
   getDataFromCookie,
   recordMember,
+  sortDocuments,
   url,
 } from "../../utils/utils";
 import {
@@ -51,10 +52,10 @@ export const DashboardProvider = ({ children }) => {
     }
 
     setDispatch(SET_USER, user);
-    setDispatch(SET_USER_DOCS, user.documents);
+    setDispatch(SET_USER_DOCS, sortDocuments(user.documents, "createdAt"));
 
     const drafts = user.documents.filter((doc) => doc.draft);
-    setDispatch(SET_USER_DRAFTS, drafts);
+    setDispatch(SET_USER_DRAFTS, sortDocuments(drafts, "createdAt"));
     setInitLoading(false);
   };
 

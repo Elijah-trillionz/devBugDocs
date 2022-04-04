@@ -59,10 +59,6 @@ export const UserAvatar = styled.div`
   cursor: pointer;
   position: relative;
 
-  &:hover div {
-    display: block;
-  }
-
   img {
     max-width: 100%;
     height: auto;
@@ -72,6 +68,7 @@ export const UserAvatar = styled.div`
 
   & > p {
     display: none;
+    user-select: none;
   }
 
   @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
@@ -92,7 +89,7 @@ export const UserAvatar = styled.div`
 `;
 
 export const DashboardHeaderDropDown = styled(HeaderDropDown)`
-  top: 105%;
+  top: 115%;
   right: 5%;
   box-shadow: 1px 2px 2px 0 rgba(213, 213, 213, 0.75),
     2px 4px 4px 0 rgba(213, 213, 213, 0.75),

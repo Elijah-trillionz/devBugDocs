@@ -27,18 +27,35 @@ export const UpperHeader = styled.div`
     color: #fff;
     text-decoration: none;
   }
+`;
+
+export const UserAvatar = styled.div`
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  cursor: pointer;
 
   img {
+    margin-right: 4px;
     max-width: 100%;
     height: auto;
     border-radius: 50%;
     cursor: pointer;
     border: 2px solid ${({ theme }) => theme.colors.button};
   }
+
+  i {
+    font-size: 0.8rem;
+    color: #fff;
+    transform: ${({ clicked }) => (clicked ? "rotate(-180deg)" : "rotate(0)")};
+    transition: 0.4s ease-in-out;
+  }
 `;
 
 export const HeaderDropDown = styled(DropDown)`
-  top: 100%;
+  top: 110%;
+  right: 0;
 
   &::after {
     display: none;

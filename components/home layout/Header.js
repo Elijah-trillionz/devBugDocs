@@ -8,11 +8,11 @@ import {
   CircleConOne,
   CircleConTwo,
   HeaderDropDown,
+  UserAvatar,
 } from "../styles/home layout/Header.styled";
 import Link from "next/link";
 import DesignSvg from "../svgs/DesignSvg";
 import CircleSvg from "../svgs/CircleSvg";
-import { v4 } from "uuid";
 import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../context/global context/GlobalState";
 import { deleteCookie, setCookie, signIn } from "../../utils/utils";
@@ -50,13 +50,16 @@ const Header = ({ title }) => {
             <Link href={"/"}>SortCode</Link>
           </p>
           {user.user ? (
-            <div>
+            <UserAvatar
+              onClick={() => setDropdownActive(!dropdownActive)}
+              clicked={dropdownActive}
+            >
               <img
                 src={user.user?.imgUri}
                 alt={`${user.user?.name}`}
                 width={40}
-                onClick={() => setDropdownActive(!dropdownActive)}
               />
+              <i className={"fas fa-chevron-down"} />
               <HeaderDropDown active={dropdownActive}>
                 <p>{user.user.name}</p>
                 <ul>
@@ -70,7 +73,7 @@ const Header = ({ title }) => {
                   <li onClick={signOut}>Logout</li>
                 </ul>
               </HeaderDropDown>
-            </div>
+            </UserAvatar>
           ) : (
             <StyledButton bg="#000" border="#000" color="#fff" onClick={signIn}>
               Login with GitHub

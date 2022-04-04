@@ -9,11 +9,13 @@ import { deleteCookie, setCookie } from "../../utils/utils";
 import { DashboardContext } from "../../context/dashboard context/DashboardState";
 import CreateDocModal from "../CreateDocModal";
 import { BodyOverlay } from "../styles/MicroNav.styled";
+import { LightBodyOverlay } from "../styles/DocumentPageAction.styled";
 
 const Header = () => {
   const { user } = useContext(DashboardContext);
   const [sticky, setSticky] = useState(false);
   const [createDocModal, setCreateDocModal] = useState(false);
+  const [dropdownActive, setDropdownActive] = useState(false);
 
   const signOut = () => {
     deleteCookie("access_token");
@@ -51,10 +53,10 @@ const Header = () => {
         <i className={"fas fa-plus"} /> Create Document
       </button>
       {user.user && (
-        <UserAvatar>
+        <UserAvatar onClick={() => setDropdownActive(!dropdownActive)}>
           <p>{user.user.name}</p>
           <img src={user.user.imgUri} alt={`${user.user.name}`} width={30} />
-          <DashboardHeaderDropDown>
+          <DashboardHeaderDropDown active={dropdownActive}>
             <p>{user.user?.name}</p>
             <ul>
               <Link href="/dashboard" as="/dashboard">
@@ -75,6 +77,10 @@ const Header = () => {
         editing={false}
       />
       <BodyOverlay active={createDocModal} />
+      <LightBodyOverlay
+        active={dropdownActive}
+        onClick={() => setDropdownActive(false)}
+      />
     </StyledHeader>
   );
 };

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const StyledDocumentItem = styled.div`
   background-color: #fff;
@@ -10,7 +10,7 @@ export const StyledDocumentItem = styled.div`
   transition: 0.3s ease-in-out;
 
   &:hover {
-    border-color: ${({theme}) => theme.colors.header};
+    border-color: ${({ theme }) => theme.colors.header};
   }
 
   & > span {
@@ -30,10 +30,11 @@ export const StyledDocumentItem = styled.div`
     transition: 0.3s ease-in-out;
     cursor: pointer;
     text-decoration: none;
+    line-height: 1.7;
   }
 
   & > a:hover {
-    color: ${({theme}) => theme.colors.header};
+    color: ${({ theme }) => theme.colors.header};
   }
 
   & > div {
@@ -80,7 +81,6 @@ export const UserAvatar = styled.div`
   a:hover {
     text-decoration-color: #666;
   }
-
 `;
 
 export const StatsItems = styled.div`
