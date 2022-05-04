@@ -7,21 +7,16 @@ import { StyledButton } from "../styles/Button.Styled";
 import { SET_AUTH_ERROR } from "../../context/types";
 
 const DocumentActions = ({ id, hearts, likedByViewer }) => {
-  const { likeDocument, success, authError, setDispatch, documentHearts } =
+  const { likeDocument, authError, setDispatch, documentHearts } =
     useContext(DashboardContext);
   const [stateHearts, setStateHearts] = useState(hearts);
   const [defColor, setDefColor] = useState(false);
 
   const incrementLike = () => {
     likeDocument(id);
+    setStateHearts(documentHearts + 1);
+    setDefColor(true);
   };
-
-  useEffect(() => {
-    if (success) {
-      setStateHearts(documentHearts);
-      setDefColor(true);
-    }
-  }, [success]);
 
   useEffect(() => {
     setDefColor(likedByViewer ? true : defColor);
@@ -33,7 +28,9 @@ const DocumentActions = ({ id, hearts, likedByViewer }) => {
         <h3>Leave a heart</h3>
         <p>
           {stateHearts}
-          <i className="fas fa-heart" onClick={incrementLike} />
+          <button onClick={incrementLike} disabled={defColor}>
+            <i className="fas fa-heart" />
+          </button>
         </p>
       </LikeDocument>
       {authError && <LoginModal active={authError} />}

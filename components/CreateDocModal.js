@@ -9,6 +9,8 @@ import {
   StyledCreateDocModal,
   TextArea,
   WarningModal,
+  PreviewTitle,
+  PreviewBody,
 } from "./styles/CreateDocModal.styled";
 import { useContext, useEffect, useState } from "react";
 import { DashboardContext } from "../context/dashboard context/DashboardState";
@@ -103,6 +105,13 @@ const CreateDocModal = ({ active, setActive, editing, docToEdit }) => {
     }
   }, [success]);
 
+  useEffect(() => {
+    if (active) {
+      // disable body scroll when modal is up
+      window.document.querySelector("body").style.overflowY = "hidden";
+    }
+  }, [active]);
+
   const toggleHeader = (src, title) => {
     if (!src) {
       setHeader(title);
@@ -144,12 +153,10 @@ const CreateDocModal = ({ active, setActive, editing, docToEdit }) => {
             />
           ) : preview ? (
             <ModalPreview>
-              <h1>{title}</h1>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: parsedDoc,
-                }}
-              />
+              <PreviewTitle>
+                <h1>{title}</h1>
+              </PreviewTitle>
+              <PreviewBody dangerouslySetInnerHTML={{ __html: parsedDoc }} />
             </ModalPreview>
           ) : (
             <>
@@ -157,8 +164,9 @@ const CreateDocModal = ({ active, setActive, editing, docToEdit }) => {
                 placeholder={"Title"}
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
+                isTitle={true}
               />
-              <div>
+              <div className="textarea-container">
                 <MarkTextArea
                   placeholder={"Write in Markdown"}
                   value={document}

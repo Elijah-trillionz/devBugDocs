@@ -78,7 +78,7 @@ export const Markdown = styled.div`
   p,
   li {
     font-size: 0.96rem;
-    padding: 10px 0;
+    margin: 10px 0;
     line-height: 1.6;
     word-spacing: 2px;
     color: #333;
@@ -153,6 +153,11 @@ export const LikeDocument = styled.div`
     font-family: "ubuntu", sans-serif;
   }
 
+  button {
+    background-color: transparent;
+    border: none;
+  }
+
   i {
     font-size: 2.5rem;
     cursor: pointer;
@@ -164,6 +169,10 @@ export const LikeDocument = styled.div`
 
   i:hover {
     color: #f5ac41;
+  }
+
+  button:disabled i:hover {
+    color: tomato;
   }
 `;
 

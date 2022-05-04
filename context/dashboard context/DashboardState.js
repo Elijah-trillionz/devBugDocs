@@ -103,7 +103,7 @@ export const DashboardProvider = ({ children }) => {
     }
 
     // res.msg returns the updated heart number
-    setDispatch(SET_DOCUMENT_HEARTS, +res.msg);
+    setDispatch(SET_DOCUMENT_HEARTS, res.msg);
     setSuccess("Liked document");
   };
 
