@@ -11,12 +11,12 @@ import {
   WarningModal,
   PreviewTitle,
   PreviewBody,
-} from "./styles/CreateDocModal.styled";
-import { useContext, useEffect, useState } from "react";
-import { DashboardContext } from "../context/dashboard context/DashboardState";
-import { formattedDate } from "../utils/dates";
-import SuccessHandler from "./SuccessHandler";
-import { useMarkdown } from "../Custom hooks/useMarkdown";
+} from './styles/CreateDocModal.styled';
+import { useContext, useEffect, useState } from 'react';
+import { DashboardContext } from '../context/dashboard context/DashboardState';
+import { formattedDate } from '../utils/dates';
+import SuccessHandler from './SuccessHandler';
+import { useMarkdown } from '../Custom hooks/useMarkdown';
 
 const CreateDocModal = ({ active, setActive, editing, docToEdit }) => {
   const {
@@ -27,15 +27,15 @@ const CreateDocModal = ({ active, setActive, editing, docToEdit }) => {
     setSuccess,
     loading,
   } = useContext(DashboardContext);
-  const [title, setTitle] = useState(editing ? docToEdit.title : "");
-  const [document, setDocument] = useState(editing ? docToEdit.document : "");
+  const [title, setTitle] = useState(editing ? docToEdit.title : '');
+  const [document, setDocument] = useState(editing ? docToEdit.document : '');
   const [preview, setPreview] = useState(false);
   const [settingsView, setSettingsView] = useState(false);
-  const [tag, setTag] = useState(editing ? docToEdit.tag : "");
-  const [category, setCategory] = useState(editing ? docToEdit.category : "");
+  const [tag, setTag] = useState(editing ? docToEdit.tag : '');
+  const [category, setCategory] = useState(editing ? docToEdit.category : '');
   const [error, setError] = useState(false);
   const [header, setHeader] = useState(
-    editing ? "Edit document" : "Create a Document"
+    editing ? 'Edit document' : 'Create a Document'
   );
   const parsedDoc = useMarkdown(document, preview);
 
@@ -50,12 +50,12 @@ const CreateDocModal = ({ active, setActive, editing, docToEdit }) => {
   const submitDocument = (draft) => {
     // errors to be specific
     if (!title) {
-      return setError("Your document has a missing title");
+      return setError('Your document has a missing title');
     } else if (!document && !draft) {
-      return setError("Nothing to document yet, save as draft.");
+      return setError('Nothing to document yet, save as draft.');
     } else if (!category || !tag) {
       return setError(
-        "Your document has a missing category or tag. Click settings to setup"
+        'Your document has a missing category or tag. Click settings to setup'
       );
     }
 
@@ -93,10 +93,10 @@ const CreateDocModal = ({ active, setActive, editing, docToEdit }) => {
   useEffect(() => {
     if (success && !editing) {
       // clear input fields
-      setTitle("");
-      setDocument("");
-      setTag("");
-      setCategory("");
+      setTitle('');
+      setDocument('');
+      setTag('');
+      setCategory('');
       setPreview(false);
       setSettingsView(false);
 
@@ -108,7 +108,10 @@ const CreateDocModal = ({ active, setActive, editing, docToEdit }) => {
   useEffect(() => {
     if (active) {
       // disable body scroll when modal is up
-      window.document.querySelector("body").style.overflowY = "hidden";
+      window.document.querySelector('body').style.overflowY = 'hidden';
+    } else {
+      // enable body scroll when modal is up
+      window.document.querySelector('body').style.overflowY = 'visible';
     }
   }, [active]);
 
@@ -116,29 +119,29 @@ const CreateDocModal = ({ active, setActive, editing, docToEdit }) => {
     if (!src) {
       setHeader(title);
     } else {
-      setHeader(editing ? "Edit Document" : "Create a Document");
+      setHeader(editing ? 'Edit Document' : 'Create a Document');
     }
   };
 
   const toggleSettings = () => {
     setSettingsView(!settingsView);
-    toggleHeader(settingsView, "Document Settings");
+    toggleHeader(settingsView, 'Document Settings');
   };
 
   const togglePreview = () => {
     setPreview(!preview);
-    toggleHeader(preview, "Document Preview");
+    toggleHeader(preview, 'Document Preview');
   };
 
   return (
     <>
       <StyledCreateDocModal active={active}>
         <ModalHeader>
-          <i className={"fas fa-times"} onClick={() => setActive(false)} />
+          <i className={'fas fa-times'} onClick={() => setActive(false)} />
           <p>{header}</p>
           <button onClick={togglePreview}>
-            <i className={`fas fa-${preview ? "arrow-left" : "eye"}`} />{" "}
-            <span>{preview ? "Go back" : "Preview"}</span>
+            <i className={`fas fa-${preview ? 'arrow-left' : 'eye'}`} />{' '}
+            <span>{preview ? 'Go back' : 'Preview'}</span>
           </button>
         </ModalHeader>
         <ModalBody>
@@ -161,14 +164,14 @@ const CreateDocModal = ({ active, setActive, editing, docToEdit }) => {
           ) : (
             <>
               <TextArea
-                placeholder={"Title"}
+                placeholder={'Title'}
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 isTitle={true}
               />
-              <div className="textarea-container">
+              <div className='textarea-container'>
                 <MarkTextArea
-                  placeholder={"Write in Markdown"}
+                  placeholder={'Write in Markdown'}
                   value={document}
                   onChange={(e) => setDocument(e.target.value)}
                 />
@@ -178,37 +181,37 @@ const CreateDocModal = ({ active, setActive, editing, docToEdit }) => {
         </ModalBody>
         <ModalFooter>
           <button onClick={toggleSettings}>
-            <i className={`fas fa-${settingsView ? "edit" : "cog"}`} />
-            <span>{settingsView ? " Editor" : " Settings"}</span>
+            <i className={`fas fa-${settingsView ? 'edit' : 'cog'}`} />
+            <span>{settingsView ? ' Editor' : ' Settings'}</span>
           </button>
           {editing ? (
             <>
               {docToEdit.draft && (
                 <button onClick={() => submitDocument(true)} disabled={loading}>
-                  <i className={"fas fa-save"} />{" "}
-                  <span>{loading ? "loading..." : "Save"}</span>
+                  <i className={'fas fa-save'} />{' '}
+                  <span>{loading ? 'loading...' : 'Save'}</span>
                 </button>
               )}
               <button onClick={() => submitDocument(false)} disabled={loading}>
-                <i className={"fas fa-paper-plane"} />{" "}
+                <i className={'fas fa-paper-plane'} />{' '}
                 <span>
                   {loading
-                    ? "loading..."
+                    ? 'loading...'
                     : !docToEdit.draft
-                    ? "Save"
-                    : "Publish"}
+                    ? 'Save'
+                    : 'Publish'}
                 </span>
               </button>
             </>
           ) : (
             <>
               <button onClick={() => submitDocument(true)} disabled={loading}>
-                <i className={"fas fa-save"} />{" "}
-                <span>{loading ? "loading..." : "Save"}</span>
+                <i className={'fas fa-save'} />{' '}
+                <span>{loading ? 'loading...' : 'Save'}</span>
               </button>
               <button onClick={() => submitDocument(false)} disabled={loading}>
-                <i className={"fas fa-paper-plane"} />{" "}
-                <span>{loading ? "loading..." : "Publish"}</span>
+                <i className={'fas fa-paper-plane'} />{' '}
+                <span>{loading ? 'loading...' : 'Publish'}</span>
               </button>
             </>
           )}
@@ -216,7 +219,7 @@ const CreateDocModal = ({ active, setActive, editing, docToEdit }) => {
         {error && (
           <ModalError>
             <p>
-              <i className={"fas fa-exclamation-circle"} /> {error}
+              <i className={'fas fa-exclamation-circle'} /> {error}
             </p>
           </ModalError>
         )}
@@ -244,18 +247,18 @@ const SettingsView = ({
     <StyledSettingsView>
       <p>Select Tag</p>
       <select onChange={selectTag} value={tag}>
-        <option value={""}>Tag</option>
-        <option value={"react"}>React.js</option>
-        <option value={"vue"}>Vue.js</option>
-        <option value={"node"}>Node.js</option>
-        <option value={"javascript"}>JavaScript</option>
-        <option value={"python"}>Python</option>
+        <option value={''}>Tag</option>
+        <option value={'react'}>React.js</option>
+        <option value={'vue'}>Vue.js</option>
+        <option value={'node'}>Node.js</option>
+        <option value={'javascript'}>JavaScript</option>
+        <option value={'python'}>Python</option>
       </select>
       <p>Select Category</p>
       <select onChange={selectCategory} value={category}>
-        <option value={""}>Category</option>
-        <option value={"front-end"}>Front-end</option>
-        <option value={"back-end"}>Back-end</option>
+        <option value={''}>Category</option>
+        <option value={'front-end'}>Front-end</option>
+        <option value={'back-end'}>Back-end</option>
       </select>
       {editing && (
         <>
