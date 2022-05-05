@@ -1,0 +1,37 @@
+{
+  "name": "Sort Code new",
+  "short_name": "SortCode",
+  "description": "Document Your Bug Experience",
+  "start_url": "/",
+  "display": "standalone",
+  "id": "/",
+  "related_applications": ["apps", "web", "learn"],
+  "theme_color": "#fff",
+  "background_color": "#86dfd9",
+  "icons": [
+    {
+      "src": "public/manifest-icon-192.maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "public/manifest-icon-192.maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "public/manifest-icon-512.maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "public/manifest-icon-512.maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
