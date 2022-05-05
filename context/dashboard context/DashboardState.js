@@ -1,12 +1,12 @@
-import { createContext, useEffect, useReducer } from "react";
-import dashboardReducer from "./dashboardReducer";
+import { createContext, useEffect, useReducer } from 'react';
+import dashboardReducer from './dashboardReducer';
 import {
   deleteCookie,
   getDataFromCookie,
   recordMember,
   sortDocuments,
   url,
-} from "../../utils/utils";
+} from '../../utils/utils';
 import {
   SET_AUTH_ERROR,
   SET_CONNECTION_ERROR,
@@ -18,10 +18,10 @@ import {
   SET_USER,
   SET_USER_DOCS,
   SET_USER_DRAFTS,
-} from "../types";
+} from '../types';
 
 const initialState = {
-  user: { ee: "ee" },
+  user: { ee: 'ee' },
   error: false,
   connectionError: false,
   initLoading: true,
@@ -43,7 +43,7 @@ export const DashboardProvider = ({ children }) => {
     setError(false);
     setInitLoading(true);
 
-    const user = await securedFetcher("user");
+    const user = await securedFetcher('user');
 
     if (user.error) {
       if (user.statusCode === 401) logUserOut();
@@ -52,16 +52,16 @@ export const DashboardProvider = ({ children }) => {
     }
 
     setDispatch(SET_USER, user);
-    setDispatch(SET_USER_DOCS, sortDocuments(user.documents, "createdAt"));
+    setDispatch(SET_USER_DOCS, sortDocuments(user.documents, 'createdAt'));
 
     const drafts = user.documents.filter((doc) => doc.draft);
-    setDispatch(SET_USER_DRAFTS, sortDocuments(drafts, "createdAt"));
+    setDispatch(SET_USER_DRAFTS, sortDocuments(drafts, 'createdAt'));
     setInitLoading(false);
   };
 
   useEffect(() => {
     let isSubscribed = true;
-    const token = getDataFromCookie("access_token");
+    const token = getDataFromCookie('access_token');
     (async () => {
       if (isSubscribed) {
         if (token) {
@@ -79,7 +79,7 @@ export const DashboardProvider = ({ children }) => {
     setLoading(true);
 
     const newDocument = { title, document, category, date, tag, draft };
-    const res = await postRequest("documents/new", newDocument, "POST");
+    const res = await postRequest('documents/new', newDocument, 'POST');
 
     if (res.error) {
       if (res.statusCode === 401) logUserOut();
@@ -87,12 +87,12 @@ export const DashboardProvider = ({ children }) => {
       return setLoading(false);
     }
 
-    setSuccess(draft ? "Saved document" : "Published document");
+    setSuccess(draft ? 'Saved document' : 'Published document');
     setLoading(false);
   };
 
   const incrementLikes = async (id) => {
-    const res = await postRequest(`documents/hearts/${id}`, {}, "PUT");
+    const res = await postRequest(`documents/hearts/${id}`, {}, 'PUT');
 
     if (res.error) {
       if (res.statusCode === 401) {
@@ -104,11 +104,11 @@ export const DashboardProvider = ({ children }) => {
 
     // res.msg returns the updated heart number
     setDispatch(SET_DOCUMENT_HEARTS, res.msg);
-    setSuccess("Liked document");
+    setSuccess('Liked document');
   };
 
   const incrementViews = async (id) => {
-    const res = await postRequest(`documents/views/${id}`, {}, "PUT", true);
+    const res = await postRequest(`documents/views/${id}`, {}, 'PUT', true);
 
     if (res.error) {
       if (res.statusCode === 401) logUserOut();
@@ -117,7 +117,7 @@ export const DashboardProvider = ({ children }) => {
     }
 
     // code for views
-    recordMember(id, "__.e-doc-vi-ew-s");
+    recordMember(id, '__.e-doc-vi-ew-s');
   };
 
   const updateDocument = async (
@@ -132,7 +132,7 @@ export const DashboardProvider = ({ children }) => {
     setLoading(true);
 
     const updatedDocument = { title, document, category, date, tag, draft };
-    const res = await postRequest(`documents/${id}`, updatedDocument, "PUT");
+    const res = await postRequest(`documents/${id}`, updatedDocument, 'PUT');
 
     if (res.error) {
       if (res.statusCode === 401) logUserOut();
@@ -140,7 +140,7 @@ export const DashboardProvider = ({ children }) => {
       return setLoading(false);
     }
 
-    setSuccess(draft ? "Saved document" : "Published document");
+    setSuccess(draft ? 'Saved document' : 'Published document');
     await getCurrentUser();
     setLoading(false);
   };
@@ -148,7 +148,7 @@ export const DashboardProvider = ({ children }) => {
   const deleteDocument = async (id) => {
     setLoading(true);
 
-    const res = await postRequest(`documents/del/${id}`, {}, "DELETE");
+    const res = await postRequest(`documents/del/${id}`, {}, 'DELETE');
 
     if (res.error) {
       if (res.statusCode === 401) logUserOut();
@@ -156,19 +156,19 @@ export const DashboardProvider = ({ children }) => {
       return setLoading(false);
     }
 
-    setSuccess("Document deleted");
+    setSuccess('Document deleted');
     await getCurrentUser();
     setLoading(false);
   };
 
   // actions. constants
   const postRequest = async (path, body, method, notPrivate) => {
-    const token = getDataFromCookie("access_token");
+    const token = getDataFromCookie('access_token');
     if (!token && !notPrivate) {
       logUserOut();
       return {
         statusCode: 401,
-        error: "You need to log in to perform this action",
+        error: 'You need to log in to perform this action',
       };
     }
 
@@ -177,47 +177,47 @@ export const DashboardProvider = ({ children }) => {
         method,
         body: JSON.stringify(body),
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
           access_token: token,
         },
       });
 
       return await res.json();
     } catch (err) {
-      setConnectionError();
+      setConnectionError(true);
       return {
-        error: "Connection error",
+        error: 'Connection error',
       };
     }
   };
 
   const securedFetcher = async (path) => {
-    const token = getDataFromCookie("access_token");
+    const token = getDataFromCookie('access_token');
     if (!token) {
       return logUserOut();
     }
 
     try {
       const res = await fetch(`${url}${path}`, {
-        method: "get",
+        method: 'get',
         headers: {
-          accept: "application/json",
+          accept: 'application/json',
           access_token: token,
         },
       });
 
       return await res.json();
     } catch (err) {
-      setConnectionError();
+      setConnectionError(true);
       return {
-        error: "Connection error",
+        error: 'Connection error',
       };
     }
   };
 
   const logUserOut = () => {
     setTimeout(() => {
-      deleteCookie("access_token");
+      deleteCookie('access_token');
     }, 5000);
   };
 
@@ -228,8 +228,8 @@ export const DashboardProvider = ({ children }) => {
     });
   };
 
-  const setConnectionError = () => {
-    setDispatch(SET_CONNECTION_ERROR, true);
+  const setConnectionError = (bool) => {
+    setDispatch(SET_CONNECTION_ERROR, bool);
   };
 
   const setError = (msg) => {
@@ -283,6 +283,7 @@ export const DashboardProvider = ({ children }) => {
         likeDocument: incrementLikes,
         updateViews: incrementViews,
         setError,
+        setConnectionError,
       }}
     >
       {children}

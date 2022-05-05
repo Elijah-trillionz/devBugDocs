@@ -1,11 +1,11 @@
-import HomeLayout from "../../components/layouts/HomeLayout";
-import Document from "../../components/article/Document";
-import SideBar from "../../components/SideBar";
-import Meta from "../../components/Meta";
-import { useRouter } from "next/router";
-import { useContext, useEffect, useState } from "react";
-import { GlobalContext } from "../../context/global context/GlobalState";
-import { DashboardContext } from "../../context/dashboard context/DashboardState";
+import HomeLayout from '../../components/layouts/HomeLayout';
+import Document from '../../components/article/Document';
+import SideBar from '../../components/SideBar';
+import Meta from '../../components/Meta';
+import { useRouter } from 'next/router';
+import { useContext, useEffect, useState } from 'react';
+import { GlobalContext } from '../../context/global context/GlobalState';
+import { DashboardContext } from '../../context/dashboard context/DashboardState';
 
 const Index = () => {
   const router = useRouter();
@@ -21,7 +21,7 @@ const Index = () => {
 
     // load a draft with user docs
     const doc =
-      type !== "draft"
+      type !== 'draft'
         ? documents.filter((document) => document.id === id)
         : userDocs.filter((document) => document.id === id);
 
@@ -31,12 +31,12 @@ const Index = () => {
         ...doc[0],
         meta: {
           ...doc[0].meta,
-          author: type !== "draft" ? doc[0].author : user.user,
+          author: type !== 'draft' ? doc[0].author : user.user,
           hearts: doc[0].hearts,
           views: doc[0].views,
         },
       };
-      removeProps(refinedDoc, "hearts", "views", "author");
+      removeProps(refinedDoc, 'hearts', 'views', 'author');
 
       setDocument(refinedDoc);
     }
@@ -55,12 +55,12 @@ const Index = () => {
           document.title
             ? document.title.substr(0, 1).toUpperCase() +
               document.title.substr(1)
-            : "loading..."
+            : 'loading...'
         }
       />
-      <div style={{ backgroundColor: "#fff" }}>
+      <div style={{ backgroundColor: '#fff' }}>
         {!document.title ? (
-          <p style={{ marginTop: "20px", color: "#444" }}>Loading...</p>
+          <p style={{ marginTop: '20px', color: '#444' }}>Loading...</p>
         ) : (
           <Document document={document} />
         )}

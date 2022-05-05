@@ -9,7 +9,6 @@ const useLoadMore = (documentFunction, moreInfo, info) => {
       const page = +localStorage.getItem('page_index');
       const htmlEl = e.target.querySelector('html');
       if (htmlEl.scrollTop >= page * 2232 && htmlEl.scrollTop <= page * 2332) {
-        console.log(info, 'from me twice')
         loadMore(info)
       }
     };

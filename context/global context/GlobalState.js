@@ -1,4 +1,4 @@
-import globalAppReducer from "./globalAppReducer";
+import globalAppReducer from './globalAppReducer';
 import {
   SEARCH_QUERY,
   SET_ALL_DOCUMENTS,
@@ -13,29 +13,29 @@ import {
   SET_TAG_DOCUMENTS,
   SET_USER,
   SET_USER_DOCUMENTS,
-} from "../types";
-import { useEffect } from "react";
-import { prevMonth, thisMonth } from "../../utils/dates";
+} from '../types';
+import { useEffect } from 'react';
+import { prevMonth, thisMonth } from '../../utils/dates';
 import {
   deleteCookie,
   getDataFromCookie,
   setCookie,
   sortDocuments,
   url,
-} from "../../utils/utils";
+} from '../../utils/utils';
 
-const { createContext, useReducer } = require("react");
+const { createContext, useReducer } = require('react');
 
 const initialValue = {
   tags: [
-    { tag: "Home", bg: "#ccc", active: true, href: "/" },
-    { tag: "Front-end", bg: "#b48c6c", href: "/category/front-end" },
-    { tag: "Back-end", bg: "#303030", href: "/category/back-end" },
-    { tag: "JavaScript", bg: "#f0db4f", href: "/tags/javascript" },
-    { tag: "React", bg: "#61dafb", href: "/tags/react" },
-    { tag: "Vue", bg: "#41B883", href: "/tags/vue" },
-    { tag: "Node", bg: "#3C873A", href: "/tags/node" },
-    { tag: "Python", bg: "#4b8bbe", href: "/tags/python" },
+    { tag: 'Home', bg: '#ccc', active: true, href: '/' },
+    { tag: 'Front-end', bg: '#b48c6c', href: '/category/front-end' },
+    { tag: 'Back-end', bg: '#303030', href: '/category/back-end' },
+    { tag: 'JavaScript', bg: '#f0db4f', href: '/tags/javascript' },
+    { tag: 'React', bg: '#61dafb', href: '/tags/react' },
+    { tag: 'Vue', bg: '#41B883', href: '/tags/vue' },
+    { tag: 'Node', bg: '#3C873A', href: '/tags/node' },
+    { tag: 'Python', bg: '#4b8bbe', href: '/tags/python' },
   ],
   documents: [],
   langDocuments: [],
@@ -65,24 +65,24 @@ export const GlobalProvider = ({ children }) => {
 
       return await res.json();
     } catch (err) {
-      setConnectionError();
+      setConnectionError(true);
       return {
-        error: "Connection error",
+        error: 'Connection error',
       };
     }
   };
 
   const getAllDocuments = async (page) => {
-    localStorage.setItem("page_index", page);
+    localStorage.setItem('page_index', page);
     setError(false);
     setInitLoading(true);
 
     // add an attribute to cookie for new users so as to redirect them with next whenever they try accessing
     // dashboard when not logged in
-    const newUser = getDataFromCookie("new_user");
-    const token = getDataFromCookie("access_token");
+    const newUser = getDataFromCookie('new_user');
+    const token = getDataFromCookie('access_token');
     if (!newUser && !token) {
-      setCookie("new_user");
+      setCookie('new_user');
     }
 
     const documents = await fetcher(`documents?page=${page}`);
@@ -106,7 +106,7 @@ export const GlobalProvider = ({ children }) => {
 
     setDispatch(
       SET_ALL_DOCUMENTS,
-      sortDocuments(documents.reverse(), "createdAt")
+      sortDocuments(documents.reverse(), 'createdAt')
     );
     setDispatch(SET_PREV_MONTH_DOCUMENTS, prevMonthDocs);
     setDispatch(SET_CURRENT_MONTH_DOCUMENTS, thisMonthDocs);
@@ -127,7 +127,7 @@ export const GlobalProvider = ({ children }) => {
 
     setDispatch(
       SET_CATEGORY_DOCUMENTS,
-      sortDocuments(langDocuments.reverse(), "createdAt")
+      sortDocuments(langDocuments.reverse(), 'createdAt')
     );
     setInitLoading(false);
   };
@@ -139,9 +139,7 @@ export const GlobalProvider = ({ children }) => {
     setInitLoading(true);
 
     // remove the s from tag name
-    const tagDocuments = await fetcher(
-      `documents/tags/${tag.substr(0, tag.length - 1)}`
-    );
+    const tagDocuments = await fetcher(`documents/tags/${tag}`);
     if (tagDocuments.error) {
       setInitLoading(false);
       return setError(tagDocuments.message);
@@ -149,7 +147,7 @@ export const GlobalProvider = ({ children }) => {
 
     setDispatch(
       SET_TAG_DOCUMENTS,
-      sortDocuments(tagDocuments.reverse(), "createdAt")
+      sortDocuments(tagDocuments.reverse(), 'createdAt')
     );
     setInitLoading(false);
   };
@@ -171,7 +169,7 @@ export const GlobalProvider = ({ children }) => {
     setDispatch(SET_AUTHOR, user);
     setDispatch(
       SET_USER_DOCUMENTS,
-      sortDocuments(userDocuments.reverse(), "createdAt")
+      sortDocuments(userDocuments.reverse(), 'createdAt')
     );
     setInitLoading(false);
   };
@@ -185,25 +183,25 @@ export const GlobalProvider = ({ children }) => {
   const signInUser = async (callbackState, code) => {
     setInitLoading(true);
     try {
-      const appState = localStorage.getItem("github-state");
+      const appState = localStorage.getItem('github-state');
       if (appState !== callbackState) {
-        setError("Sign in compromised. Try again!");
+        setError('Sign in compromised. Try again!');
         return setInitLoading(false);
       }
 
       const res = await fetch(`${url}users/register`, {
-        method: "post",
+        method: 'post',
         headers: {
-          "Content-type": "application/json",
-          accept: "application/json",
+          'Content-type': 'application/json',
+          accept: 'application/json',
         },
         body: JSON.stringify({ code }),
       });
 
       const jsonRes = await res.json();
       if (res.ok) {
-        deleteCookie("new_user");
-        setCookie("access_token", jsonRes.token);
+        deleteCookie('new_user');
+        setCookie('access_token', jsonRes.token);
         // reload is done to help nextjs notice the access token and redirect to dashboard
         window.location.reload();
         setInitLoading(false);
@@ -212,7 +210,7 @@ export const GlobalProvider = ({ children }) => {
         return setError(jsonRes.message);
       }
     } catch (err) {
-      return setConnectionError();
+      return setConnectionError(true);
     }
   };
 
@@ -222,9 +220,9 @@ export const GlobalProvider = ({ children }) => {
 
     try {
       const res = await fetch(`${url}user`, {
-        method: "get",
+        method: 'get',
         headers: {
-          Accept: "application/json",
+          Accept: 'application/json',
           access_token: token,
         },
       });
@@ -239,20 +237,20 @@ export const GlobalProvider = ({ children }) => {
 
       setInitLoading(false);
     } catch (err) {
-      return setConnectionError();
+      return setConnectionError(true);
     }
   };
 
   const logUserOut = () => {
     setDispatch(SET_AUTH_ERROR, true);
     setTimeout(() => {
-      deleteCookie("access_token");
+      deleteCookie('access_token');
     }, 5000);
   };
 
   useEffect(() => {
     let isSubscribed = true;
-    const token = getDataFromCookie("access_token");
+    const token = getDataFromCookie('access_token');
     (async () => {
       if (isSubscribed) {
         if (token) {
@@ -275,8 +273,8 @@ export const GlobalProvider = ({ children }) => {
     });
   };
 
-  const setConnectionError = () => {
-    setDispatch(SET_CONNECTION_ERROR, true);
+  const setConnectionError = (bool) => {
+    setDispatch(SET_CONNECTION_ERROR, bool);
   };
 
   const setError = (msg) => {
@@ -313,6 +311,7 @@ export const GlobalProvider = ({ children }) => {
         searchQuery,
         signInUser,
         getUserDocuments,
+        setConnectionError,
       }}
     >
       {children}
