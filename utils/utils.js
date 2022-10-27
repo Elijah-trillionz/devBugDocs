@@ -58,7 +58,7 @@ export const verifyMember = (id, name) => {
   return member ? member.id : false;
 };
 
-export const url = 'https://sortcode-api.herokuapp.com/api/';
+export const url = 'https://sortcode-new-api.herokuapp.com/api/';
 
 export const signIn = () => {
   const state = v4();
