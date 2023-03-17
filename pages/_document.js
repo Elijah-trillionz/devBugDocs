@@ -13,13 +13,13 @@ class MyDocument extends Document {
           />
           <meta name='description' content='Description' />
           <meta name='keywords' content='Keywords' />
-          <link rel='manifest' href='/manifest.json' />
+          <link rel='manifest' href='/favicon/site.webmanifest' />
           <link
             href='https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;600;700&family=Ubuntu:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap'
             rel='stylesheet'
           />
           <link
-            href='/favicon.png'
+            href='/favicon/favicon.ico'
             rel='icon'
             type='image/png'
             sizes='16x16'
