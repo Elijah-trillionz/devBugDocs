@@ -20,7 +20,7 @@ const Index = () => {
     if (documents.length <= 0) return
 
     searchQuery(query);
-    setCapQuery(query.substr(0, 1).toUpperCase() + query.substr(1))
+    setCapQuery(query.substring(0, 1).toUpperCase() + query.substring(1))
     // eslint-disable-next-line
   }, [query, documents]);
 
@@ -29,7 +29,7 @@ const Index = () => {
       headerTitle: `Search results on ${capQuery}`,
       mainTitle: 'Search results'
     }}>
-      <Meta title={`Search results on ${capQuery} | SortCode`}/>
+      <Meta title={`Search results on ${capQuery} | devBugDocs`}/>
       <div>
         <DocumentList documents={results} capTitle={`Search query: ${capQuery}`}
                       _404Title={`the search query: ${capQuery}`} setFilterType={setFilterType}

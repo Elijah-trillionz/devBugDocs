@@ -31,7 +31,7 @@ const Index = () => {
         mainTitle: docsAuthor.name,
       }}
     >
-      <Meta title={`Documents from ${docsAuthor.name} | SortCode`} />
+      <Meta title={`Documents from ${docsAuthor.name} | devBugDocs`} />
       <div>
         <DocumentList
           documents={userDocuments}

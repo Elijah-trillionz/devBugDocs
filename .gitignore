@@ -32,7 +32,8 @@ yarn-error.log*
 
 # vercel
 .vercel
-
+/.idea
+package-lock.json
 **/public/sw.js
 **/public/workbox-*.js
 **/public/worker-*.js

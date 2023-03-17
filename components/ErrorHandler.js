@@ -1,4 +1,3 @@
-import { StyledSuccessHandler } from "./styles/SuccessHandler.styled";
 import { useEffect } from "react";
 import { StyledErrorHandler } from "./styles/ErrorHandler.styled";
 

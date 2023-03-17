@@ -8,7 +8,7 @@ const SearchModal = ({isModalActive}) => {
   return (
     <StyledSearchModal active={isModalActive}>
       <div>
-        <h3>Search SortCode</h3>
+        <h3>Search devBugDocs</h3>
         <input
           type='search'
           name='search'

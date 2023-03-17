@@ -1,10 +1,7 @@
-import {useContext, useEffect} from "react";
-import {GlobalContext} from "../context/global context/GlobalState";
+import {useEffect} from "react";
 
 const useLoadMore = (documentFunction, moreInfo, info) => {
   useEffect(() => {
-    // if (moreInfo && !info) return;
-
     const loadMoreDocuments = (e) => {
       const page = +localStorage.getItem('page_index');
       const htmlEl = e.target.querySelector('html');

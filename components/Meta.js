@@ -26,5 +26,5 @@ Meta.defaultProps = {
   keywords:
     'web development, problems, features, experience, coding, programming',
   description: 'Share your errors, solutions for reference.',
-  title: 'SortCode | Experienced Dev Experience',
+  title: 'devBugDocs | Experienced Dev Experience',
 };

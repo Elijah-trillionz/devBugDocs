@@ -13,7 +13,7 @@ import {
 import Link from "next/link";
 import DesignSvg from "../svgs/DesignSvg";
 import CircleSvg from "../svgs/CircleSvg";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { GlobalContext } from "../../context/global context/GlobalState";
 import { deleteCookie, setCookie, signIn } from "../../utils/utils";
 import CreateDocModal from "../CreateDocModal";
@@ -35,7 +35,6 @@ const Header = ({ title }) => {
     if (user.user) setCreateDocModal(!createDocModal);
   };
 
-  // TODO: more to do on the header
   return (
     <>
       <StyledHeader>
@@ -47,7 +46,7 @@ const Header = ({ title }) => {
         </CircleConOne>
         <UpperHeader>
           <p>
-            <Link href={"/"}>SortCode</Link>
+            <Link href={"/"}>devBugDocs</Link>
           </p>
           {user.user ? (
             <UserAvatar

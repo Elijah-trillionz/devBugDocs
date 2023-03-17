@@ -46,7 +46,7 @@ const Header = () => {
     <StyledHeader sticky={sticky}>
       <h2>
         <Link href="/" as="/">
-          SortCode
+          devBugDocs
         </Link>
       </h2>
       <button onClick={toggleCreateDocModal}>

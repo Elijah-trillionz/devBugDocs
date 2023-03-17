@@ -15,12 +15,12 @@ const Home = () => {
   return (
     <HomeLayout smallerDiv={false}>
       <NextSeo
-        title='SortCode | Experienced Dev Experience'
+        title='devBugDocs | Experienced Dev Experience'
         description='Share your errors, solutions for reference.'
         canonical='https://dev.to/elijahtrillionz'
         openGraph={{
-          url: 'https://sortcode.vercel.app',
-          title: 'SortCode | Experienced Dev Experience',
+          url: 'https://devBugDocs.vercel.app',
+          title: 'devBugDocs | Experienced Dev Experience',
           description:
             "Share your errors, and solutions for; which you can easily refer back to when in need. It's like documenting your coding experience",
           images: [
@@ -32,7 +32,7 @@ const Home = () => {
               type: 'image/jpeg',
             },
           ],
-          site_name: 'SortCode',
+          site_name: 'devBugDocs',
         }}
         twitter={{
           handle: '@elijahtrillionz',

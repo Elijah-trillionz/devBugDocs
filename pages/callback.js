@@ -3,7 +3,6 @@ import {GlobalContext} from "../context/global context/GlobalState";
 import {useRouter} from "next/router";
 import Link from "next/link";
 import {LinkButton, StyledCallback} from "../components/styles/Callback.styled";
-import {StyledButton} from "../components/styles/Button.Styled";
 
 const Callback = () => {
   const [invalidLink, setInvalidLink] = useState(false)

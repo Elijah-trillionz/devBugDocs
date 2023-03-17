@@ -46,7 +46,7 @@ const MicroNav = ({ mainTitle }) => {
 
   return (
     <StyledMicroNav sticky={sticky}>
-      {sticky && <h2>{mainTitle ? mainTitle : "SortCode"}</h2>}
+      {sticky && <h2>{mainTitle ? mainTitle : "devBugDocs"}</h2>}
       <div>
         <ul>
           {tags.map((tag) => (

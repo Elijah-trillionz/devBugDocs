@@ -58,10 +58,10 @@ export const verifyMember = (id, name) => {
   return member ? member.id : false;
 };
 
-export const url = 'https://sortcode-new-api.herokuapp.com/api/';
+export const url = 'http://localhost:5000/api/';
 
 export const signIn = () => {
   const state = v4();
   localStorage.setItem('github-state', state);
-  window.location = `https://github.com/login/oauth/authorize?client_id=2c05d57e6bffd2b25207&state=${state}`;
+  window.location = `https://github.com/login/oauth/authorize?client_id=a433e9217863b48c3200&state=${state}`;
 };

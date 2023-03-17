@@ -32,7 +32,7 @@ const Index = () => {
         mainTitle: capTag,
       }}
     >
-      <Meta title={`Documents on Tag: ${capTag} | SortCode`} />
+      <Meta title={`Documents on Tag: ${capTag} | devBugDocs`} />
       <div>
         <DocumentList
           documents={tagDocuments}

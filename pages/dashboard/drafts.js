@@ -11,7 +11,7 @@ const Drafts = () => {
 
   return (
     <DashboardLayout>
-      <Meta title={`${user.user ? `${user.user.name} Drafts` : 'loading...'} | SortCode`}/>
+      <Meta title={`${user.user ? `${user.user.name} Drafts` : 'loading...'} | devBugDocs`}/>
       <div>
         <main>
           <h3>Your drafts</h3>
