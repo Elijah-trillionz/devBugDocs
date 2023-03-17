@@ -58,7 +58,7 @@ export const verifyMember = (id, name) => {
   return member ? member.id : false;
 };
 
-export const url = 'http://localhost:5000/api/';
+export const url = 'https://devbugdocs-api.onrender.com/api/';
 
 export const signIn = () => {
   const state = v4();
