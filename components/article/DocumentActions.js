@@ -25,7 +25,7 @@ const DocumentActions = ({ id, hearts, likedByViewer }) => {
   return (
     <div>
       <LikeDocument defColor={defColor}>
-        <h3>Leave a heart</h3>
+        <h3>Leave a heart if helpful</h3>
         <p>
           {stateHearts}
           <button onClick={incrementLike} disabled={defColor}>
