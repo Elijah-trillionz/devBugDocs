@@ -58,7 +58,7 @@ export const verifyMember = (id, name) => {
   return member ? member.id : false;
 };
 
-export const url = 'https://devbugdocs-api.onrender.com/api/';
+export const url = 'https://devbugdocs-api.trillionz.repl.co/api/';
 
 export const signIn = () => {
   const state = v4();
